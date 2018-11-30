@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+       id 'application'
+    // id 'idea'
+    id 'com.avast.gradle.docker-compose' version '0.7.1'
+   // id 'com.android.application'
+
+}
+
+version '1.0-SNAPSHOT'
+
+dockerCompose {
+    isRequiredBy(project.tasks.test)
+    exposeAsSystemProperties(project.tasks.test)
+}
+
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+
+//mainClassName = 'CorrectLogIn'
+
+dependencies {
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.14.0'
+    //testCompile 'junit:junit:4.12'
+    compile 'io.appium:java-client:6.0.0'
+    compile 'junit:junit:4.12'
+
+    compile 'com.android.support.test:testing-support-lib:0.1'
+    compile 'com.android.support.test.uiautomator:uiautomator-v18:2.0.0'
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '23.0.1'
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+}
+
+
+
+
