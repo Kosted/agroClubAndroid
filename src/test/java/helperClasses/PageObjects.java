@@ -24,6 +24,7 @@ public class PageObjects {
     protected static AddresManualAddPage addresManualAddPage;
     protected static MyAddressPage myAddressPage;
     protected static ProfilePage profilePage;
+    protected static MarketFilterPage marketFilterPage;
 
 
     private WebActions web_a;
@@ -44,6 +45,7 @@ public class PageObjects {
         addresManualAddPage = new AddresManualAddPage(web_a);
         profilePage = new ProfilePage(web_a);
         myAddressPage = new MyAddressPage(web_a);
+        marketFilterPage = new MarketFilterPage(web_a);
 
     }
 

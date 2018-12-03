@@ -10,13 +10,10 @@ import subPageObj.ShortMarcetPlaseDeclaration;
 
 import java.util.List;
 
-public class MarcetplacePage extends MainAgroPage {
+public class MarketFilterPage extends MainAgroPage {
 
     @FindBy(id = "ru.agroclub:id/toolbarTitle")
     private WebElement titleLabel;
-
-    @FindBy(id = "ru.agroclub:id/rvCrop")
-    private WebElement cultureFilterWebList;
 
     @FindBy(id = "ru.agroclub:id/rvDeclarations")
     private WebElement declarationWebList;
@@ -30,20 +27,18 @@ public class MarcetplacePage extends MainAgroPage {
     @FindBy(id = "ru.agroclub:id/clAddress")
     private WebElement chouseAddresButton;
 
-    private Swipe swipeCultureRight;
-    private Swipe swipeCultureLeft;
+    @FindBy(id = "ru.agroclub:id/ivFilter")
+    private WebElement filterButton;
+
     private Swipe swipedeclarationsDown;
 
-    public MarcetplacePage(WebActions webActions) {
+    public MarketFilterPage(WebActions webActions) {
         super(webActions);
-        swipeCultureRight = new Swipe(web_a, 90, 17, 10, 17, 1000);
-        swipeCultureLeft = new Swipe(web_a, 10, 17, 90, 17, 1000);
-        swipedeclarationsDown = new Swipe(web_a, 50, 73, 50, 45, 1000);
+        swipedeclarationsDown = new Swipe(web_a, 50,73,50,45,1000);
     }
 
-
-    public Boolean currentPage() {
-        return web_a.isPresent(titleLabel).getText().equals("Рынок");
+    public String getTitle(){
+        return titleLabel.getText();
     }
 
     public FullMarcetPlaseDeclaration chouseDeclaration(int position, Boolean doOffer) {
@@ -52,7 +47,7 @@ public class MarcetplacePage extends MainAgroPage {
             FullMarcetPlaseDeclaration fullMarcetPlaseDeclaration = new FullMarcetPlaseDeclaration(web_a);
             web_a.waitToBeClickableAndClick(doOfferButton);
             return fullMarcetPlaseDeclaration;
-        } else
+        }else
             return new FullMarcetPlaseDeclaration(web_a);
     }
 
@@ -61,62 +56,22 @@ public class MarcetplacePage extends MainAgroPage {
         return new ShortMarcetPlaseDeclaration(web_a, elements.get(position));
     }
 
-    public String chouseCulturefilter(String cultureName) {
-
-        List<WebElement> cultureList;
-        String currentfilter = "";
-
-        while (!currentfilter.equals(cultureName)) {
-
-            cultureList = getVisableCulture();
-
-            for (WebElement webElement : cultureList) {
-
-                currentfilter = webElement.getText();
-
-                if (currentfilter.equals(cultureName)) {
-                    webElement.click();
-                    return cultureName;
-
-                }
-            }
-            swipeСulture("right");
-        }
-
-        return cultureName;
-    }
-
-    public List<WebElement> getVisableCulture() {
-
-        return cultureFilterWebList.findElements(By.className("android.widget.TextView"));
-    }
-
-    public void swipeСulture(String direction) {
-        switch (direction) {
-            case "right": {
-                web_a.swipeAction(swipeCultureRight);
-                break;
-            }
-            case "left": {
-                web_a.swipeAction(swipeCultureRight);
-                break;
-            }
-        }
 
 
-    }
-
-    public void clickOnBackButton() {
+    public void clickOnBackButton(){
         web_a.waitToBeClickableAndClick(backButton);
     }
+    public void clickOnFilterButton(){
+        web_a.waitToBeClickableAndClick(filterButton);
+    }
 
-    public void clickOnchouseAddresButton() {
+    public void clickOnChouseAddresButton(){
         web_a.waitToBeClickableAndClick(chouseAddresButton);
     }
 
-    public String getMarketAddres() {
+    public String getMarketAddres(){
         WebElement present = web_a.isPresent(chouseAddresButton, By.id("ru.agroclub:id/tvData2"), 3);
-        if (present != null)
+        if (present!=null)
             return present.getText();
         else return null;
     }
