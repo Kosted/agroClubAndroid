@@ -27,6 +27,9 @@ public class MarcetplacePage extends MainAgroPage {
     @FindBy(id = "ru.agroclub:id/toolbarBackBtn")
     private WebElement backButton;
 
+    @FindBy(id = "ru.agroclub:id/llUnfilledAddress")
+    private WebElement chouseAddresButton;
+
     Swipe swipeCultureRight;
     Swipe swipeCultureLeft;
     Swipe swipedeclarationsDown;
