@@ -41,13 +41,13 @@ public class AddAddressPage extends SuperPage {
     }
 
     public void clickOnAllowPermissionButton() {
-        if (web_a.isPresent(allowPermissionButton, 5) != null)
+        if (web_a.isPresent(allowPermissionButton, 2) != null)
             web_a.waitToBeClickable(allowPermissionButton).click();
 
     }
 
     public void clickOnDenyPermissionButton() {
-        if (web_a.isPresent(denyPermissionButton, 5) != null)
+        if (web_a.isPresent(denyPermissionButton, 2) != null)
             web_a.waitToBeClickable(denyPermissionButton).click();
 
     }
@@ -69,7 +69,7 @@ public class AddAddressPage extends SuperPage {
     }
 
     public void insertOnAddressNameField(String address) {
-        web_a.waitToBeClickable(addressNameField).sendKeys(address);
+        web_a.insertTextOnAndroidEditTextField(addressNameField,address);
     }
 
 

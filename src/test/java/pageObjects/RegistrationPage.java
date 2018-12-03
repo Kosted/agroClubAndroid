@@ -2,6 +2,7 @@ package pageObjects;
 
 import helperClasses.WebActions;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import superClasses.SuperPage;
@@ -34,7 +35,8 @@ public class RegistrationPage extends SuperPage {
     public void insertFullName(String fullName) {
 
         web_a.waitToBeClickable(fullNameField).clear();
-        web_a.waitToBeClickable(fullNameField).sendKeys(fullName);
+
+        web_a.insertTextOnAndroidEditTextField(fullNameField,fullName);
     }
 
     public void insertEmail(String email) {

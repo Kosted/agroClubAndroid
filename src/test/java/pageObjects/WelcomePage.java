@@ -8,6 +8,10 @@ import superClasses.SuperPage;
 
 public class WelcomePage extends SuperPage {
 
+    @FindBy(id = "ru.agroclub:id/toolbarRightBtn")
+    private WebElement continButton;
+
+
     @FindBy(id = "ru.agroclub:id/tvTitleOnBoard")
     private WebElement indicator;
 
@@ -18,7 +22,10 @@ public class WelcomePage extends SuperPage {
         swipe = new Swipe(webActions, 95,50,5,50, 500);
 
     }
+    public void clickOnContinButton() {
+        web_a.waitToBeClickableAndClick(continButton);
 
+    }
 
     public Boolean currentPage() {
         return web_a.isPresent(indicator,5)!=null;
@@ -32,8 +39,10 @@ public class WelcomePage extends SuperPage {
     }
 
     public void skipWelcomeTour(){
-        if (currentPage())
-            swipeWelcome(5);
+        if (currentPage()) {
+            swipeWelcome(3);
+            clickOnContinButton();
+        }
     }
 
 }

@@ -55,11 +55,11 @@ public class MyAddressPage extends SuperPage {
     }
 
     private WebElement getMyAddres(int position) {
-        while (web_a.isPresent(null, By.id("ru.agroclub:id/recycler"), 3)==null){
-            System.out.println("не могу найти recycler");
-
-        }
-            //web_a.isPresent(null, By.id("ru.agroclub:id/recycler"), 3);
+//        while (web_a.isPresent(null, By.id("ru.agroclub:id/recycler"), 3)==null){
+//            System.out.println("не могу найти recycler");
+//
+//        }
+//            //web_a.isPresent(null, By.id("ru.agroclub:id/recycler"), 3);
         List<WebElement> elements = web_a.getDriver().findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup"));
         while (elements.size() == 0)
             elements = web_a.getDriver().findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup"));

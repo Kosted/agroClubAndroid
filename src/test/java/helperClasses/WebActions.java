@@ -31,7 +31,7 @@ public class WebActions {
 
     public WebActions(String driverMod) throws MalformedURLException {
         //super();
-        defaultImlicityWait = 30;
+        defaultImlicityWait = 10;
 
         if (driverMod.equals("WEB"))
             createWebDriver();
@@ -42,11 +42,22 @@ public class WebActions {
         else if (driverMod.equals("IOS"))
             createIOSDriver();
 
+        else if (driverMod.equals("UIAUTOMATOR2"))
+            createUIAUTOMATOR2Driver();
+
         wait1 = new WebDriverWait(driver, 1);
         wait2 = new WebDriverWait(driver, 2);
         wait5 = new WebDriverWait(driver, 5);
         wait10 = new WebDriverWait(driver, 10);
         wait30 = new WebDriverWait(driver, 30);
+
+    }
+
+
+
+
+    public void createUIAUTOMATOR2Driver() {
+
 
     }
 
@@ -99,19 +110,19 @@ public class WebActions {
     public void createAndroidDriver() {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("appium-version", "1.7.0");//1.9.0
+        capabilities.setCapability("appium-version", "1.8.2");//1.9.0
         capabilities.setCapability("platformName", "android");
         capabilities.setCapability("platformVersion", "8.0.0");
         capabilities.setCapability("deviceName", "CQ3000HB6L");
-        String appVersion = "12" + "1";
-        capabilities.setCapability("app", "/home/k.malev/Загрузки/agroclub-" +"2.0.2"+"(" + appVersion +")-api(v1.0.6)-debug.apk");
+        String appVersion = "12" + "2";
+        capabilities.setCapability("app", "/Users/mcs/Downloads/agroclub-" +"2.0.2"+"(" + appVersion +")-api(v1.0.6)-debug.apk");
         //capabilities.setCapability("app", "/home/k.malev/Загрузки/agroclub-2.0.1(111)-api(v1.0.5)-debug.apk");
 
         capabilities.setCapability("appPackage", "ru.agroclub");
         capabilities.setCapability("appActivity", "ru.agroclub.app.splash.SplashView");
-        capabilities.setCapability("noReset", true);
-        capabilities.setCapability("unicodeKeyboard", "true");
-        capabilities.setCapability("newCommandTimeout", "300");
+        capabilities.setCapability("noReset", false);
+        capabilities.setCapability("unicodeKeyboard", true);
+        capabilities.setCapability("newCommandTimeout", 300);
         capabilities.setCapability("autoGrantPermissions",  true);
         capabilities.setCapability("automationName", "uiautomator2");
         //capabilities.setCapability("automationName", "selendroid");
@@ -174,10 +185,10 @@ public class WebActions {
         try {
             waitToBeClickable(webElement);
         } catch (Exception e) {
-            System.out.println("не был кликабелен и нажат элемент");
+            System.out.println(webElement.getAttribute("className")+"не был кликабелен и нажат элемент");
             return false;
         }
-        System.out.println(webElement.getTagName() + " был кликабелен и нажат");
+        System.out.println(webElement.getAttribute("className") + " был кликабелен и нажат");
         webElement.click();
         return true;
     }
@@ -253,7 +264,7 @@ public class WebActions {
             System.out.println("элемент не найден");
             return null;
         }
-        System.out.println("элемент найден " + webElement.getTagName());
+        System.out.println("элемент найден " + webElement.getAttribute("className"));
         return webElement;
     }
 
@@ -291,8 +302,13 @@ public class WebActions {
             System.out.println("элемент не найден");
             return null;
         }
-        System.out.println("элемент найден " + webElement.getTagName());
+        System.out.println("элемент найден " + webElement.getAttribute("className"));
         return webElement;
+    }
+
+    public void insertTextOnAndroidEditTextField(WebElement field ,String text){
+        isPresent(field).findElement(By.className("android.widget.EditText")).sendKeys(text);
+
     }
 
     public void swipeAction(Swipe swipe) {

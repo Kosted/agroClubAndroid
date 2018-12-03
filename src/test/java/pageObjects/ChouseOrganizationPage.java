@@ -62,18 +62,18 @@ public class ChouseOrganizationPage extends SuperPage {
     }
 
     public void insertOrganization(String organization) {
-        web_a.waitToBeClickable(organizationField).sendKeys(organization);
+        web_a.insertTextOnAndroidEditTextField(organizationField,organization);
 
     }
 
     public void insertSubdivision(String subdivision) {
-        web_a.isPresent(subdivisionField,3);
-        while(web_a.isPresent(subdivisionField,1)==null) {
-            clickOnBackButton();
-            chouseOrganization(0);
-            clickOnSaveButton();
-        }
-        web_a.waitToBeClickable(subdivisionField).sendKeys(subdivision);
+//        web_a.isPresent(subdivisionField,3);
+//        while(web_a.isPresent(subdivisionField,1)==null) {
+//            clickOnBackButton();
+//            chouseOrganization(0);
+//            clickOnSaveButton();
+//        }
+        web_a.insertTextOnAndroidEditTextField(subdivisionField,subdivision);
 
     }
 

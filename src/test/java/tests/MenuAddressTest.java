@@ -41,11 +41,8 @@ public class MenuAddressTest extends SuperTest {
         myAddressPage.setMyAddresMain(1);
 
 
-        myAddressPage.clickOnAddAddresButton();
 
-        addAddressPage.clickOnNextButton();
-
-        myAddressPage.swipeUp();
+        //myAddressPage.swipeUp();
 
         assertMCS.equalsTrue(myAddressPage.getMyAddresName(0).equals(newAddres + " (Основной)")  , "другой адресс не стал основным");
         assertMCS.equalsFalse(myAddressPage.getMyAddresUpdateIsPossible(0)  , "у другого адресса не исчезла кнопка меню");
