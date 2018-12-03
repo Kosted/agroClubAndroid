@@ -57,7 +57,24 @@ public class MenuAddressTest extends SuperTest {
 
     }
 
+    @Test
+    public void marketplaseAddres() {
 
+        registration(null, null, null);
+        assertMCS.equalsTrue(marcetplacePage.getMarketAddres()==null, "на рынке изначально был задан адрес приемки");
+
+        marcetplacePage.clickOnchouseAddresButton();
+
+        String addres = myAddressPage.getMyAddresAddres(0);
+        myAddressPage.chouseAddres(0);
+
+        assertMCS.equalsTrue(addres.equals(marcetplacePage.getMarketAddres()),"адресс не подтянулся в рынок после нажатия");
+
+        marcetplacePage.clickOnMenuButton();
+
+        menuPage.clickOnLogautButton();
+
+    }
 }
 
 

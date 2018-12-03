@@ -30,9 +30,9 @@ public class MarcetplacePage extends MainAgroPage {
     @FindBy(id = "ru.agroclub:id/llUnfilledAddress")
     private WebElement chouseAddresButton;
 
-    Swipe swipeCultureRight;
-    Swipe swipeCultureLeft;
-    Swipe swipedeclarationsDown;
+    private Swipe swipeCultureRight;
+    private Swipe swipeCultureLeft;
+    private Swipe swipedeclarationsDown;
 
     public MarcetplacePage(WebActions webActions) {
         super(webActions);
@@ -70,12 +70,12 @@ public class MarcetplacePage extends MainAgroPage {
 
             cultureList = cultureFilterWebList.findElements(By.className("android.widget.TextView"));
 
-            for (int i = 0; i < cultureList.size(); i++) {
+            for (WebElement webElement : cultureList) {
 
-                currentfilter = cultureList.get(i).getText();
+                currentfilter = webElement.getText();
 
                 if (currentfilter.equals(cultureName)) {
-                    cultureList.get(i).click();
+                    webElement.click();
                     return cultureName;
 
                 }
@@ -106,6 +106,17 @@ public class MarcetplacePage extends MainAgroPage {
 
     public void clickOnBackButton(){
         web_a.waitToBeClickableAndClick(backButton);
+    }
+
+    public void clickOnchouseAddresButton(){
+        web_a.waitToBeClickableAndClick(chouseAddresButton);
+    }
+
+    public String getMarketAddres(){
+        WebElement present = web_a.isPresent(chouseAddresButton, By.id("ru.agroclub:id/tvData2"), 3);
+        if (present!=null)
+            return present.getText();
+        else return null;
     }
 
 }

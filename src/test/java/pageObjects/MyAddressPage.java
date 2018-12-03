@@ -36,7 +36,7 @@ public class MyAddressPage extends SuperPage {
 
     public void assertion() {
         Assert.assertTrue("отсутствует заголовок страницы \"Укажите адрес отгрузки\"", currentPage(30));
-        Assert.assertTrue("отсутствует кнопка далее", nextButton != null);
+        Assert.assertNotNull("отсутствует кнопка далее", nextButton);
     }
 
     public void clickOnBackButton() {
@@ -91,6 +91,10 @@ public class MyAddressPage extends SuperPage {
         while (web_a.isPresent(addNewAddresButton, 2) == null)
             web_a.swipeAction(swipeMyAddressListDown);
         web_a.waitToBeClickableAndClick(addNewAddresButton);
+
+    }
+    public void chouseAddres(int position) {
+        web_a.waitToBeClickableAndClick(getMyAddres(position));
 
     }
 
