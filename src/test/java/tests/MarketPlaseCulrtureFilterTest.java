@@ -27,7 +27,7 @@ public class MarketPlaseCulrtureFilterTest extends SuperTest {
         while (cultureAssertList.size() < 26) {
             List<WebElement> visableCulture = marcetplacePage.getVisableCulture();
 
-            for (WebElement cultureElem : visableCulture) {
+            for (int i=0; i<visableCulture.size(); i++/*WebElement cultureElem : visableCulture*/) {
                 for (WebElement print : visableCulture)
 
                     System.out.println(print.getText());
@@ -36,7 +36,7 @@ public class MarketPlaseCulrtureFilterTest extends SuperTest {
                 for (WebElement print : visableCulture)
                     System.out.println(print.getText());
 
-                String culture = cultureElem.getText();
+                String culture = visableCulture.get(i).getText();
                 if (!cultureAssertList.contains(culture)) {
                     cultureAssertList.add(marcetplacePage.chouseCulturefilter(culture));
                     assertMCS.equalsTrue(marketFilterPage.getTitle().equals(culture), "название заголовка " +
