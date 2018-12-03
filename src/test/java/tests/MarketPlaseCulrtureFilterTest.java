@@ -26,9 +26,16 @@ public class MarketPlaseCulrtureFilterTest extends SuperTest {
         List<String> cultureAssertList = new ArrayList<>();
         while (cultureAssertList.size() < 26) {
             List<WebElement> visableCulture = marcetplacePage.getVisableCulture();
+
             for (WebElement cultureElem : visableCulture) {
                 for (WebElement print : visableCulture)
+
                     System.out.println(print.getText());
+                visableCulture = marcetplacePage.getVisableCulture();
+
+                for (WebElement print : visableCulture)
+                    System.out.println(print.getText());
+
                 String culture = cultureElem.getText();
                 if (!cultureAssertList.contains(culture)) {
                     cultureAssertList.add(marcetplacePage.chouseCulturefilter(culture));

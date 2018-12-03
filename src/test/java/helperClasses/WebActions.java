@@ -128,7 +128,7 @@ public class WebActions {
         capabilities.setCapability("platformName", "android");
         capabilities.setCapability("platformVersion", "8.0.0");
         capabilities.setCapability("deviceName", "CQ3000HB6L");
-        String appVersion = "12" + "2";
+        String appVersion = "12" + "3";
         capabilities.setCapability("app", "/Users/mcs/Downloads/agroclub-" +"2.0.2"+"(" + appVersion +")-api(v1.0.6)-debug.apk");
         //capabilities.setCapability("app", "/home/k.malev/Загрузки/agroclub-2.0.1(111)-api(v1.0.5)-debug.apk");
 
