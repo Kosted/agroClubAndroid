@@ -33,7 +33,7 @@ for (WebElement cultureElem: visableCulture){
                 marketFilterPage.getTitle() +  " страницы не соответствует выбранному фильтру "+culture);
         assertMCS.equalsTrue(marketFilterPage.getShortMarcetPlaseDeclaration(0).getCultureName().equals(culture),"первая культура " +
                 marketFilterPage.getShortMarcetPlaseDeclaration(0).getCultureName()+  " не соответствует выбранному фильтру "  + culture);
-
+        marketFilterPage.clickOnBackButton();
     }
 marcetplacePage.swipeСulture("right");
 }
