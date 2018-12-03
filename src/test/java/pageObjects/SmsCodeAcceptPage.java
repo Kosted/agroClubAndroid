@@ -39,7 +39,7 @@ public class SmsCodeAcceptPage extends SuperPage {
     }
 
     public String getSmsCode() {
-        return web_a.isPresent(cheatCodeLabel, 3).getText();
+        return web_a.isPresent(cheatCodeLabel, 10).getText();
 
     }
 

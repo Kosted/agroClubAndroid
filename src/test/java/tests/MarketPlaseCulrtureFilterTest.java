@@ -21,6 +21,7 @@ public class MarketPlaseCulrtureFilterTest extends SuperTest {
         welcomePage.skipWelcomeTour();
 
         autorization("9054733762", 1);
+        priceUpdatePage.clickOnConfirmButton();
 
         List<String> cultureAssertList = new ArrayList<>();
         while (cultureAssertList.size() < 26) {
