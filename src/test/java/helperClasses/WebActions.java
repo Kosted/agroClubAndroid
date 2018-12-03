@@ -19,32 +19,33 @@ import java.util.concurrent.TimeUnit;
 
 public class WebActions {
 
-    protected WebDriverWait wait1;
-    protected WebDriverWait wait2;
-    protected WebDriverWait wait5;
-    protected WebDriverWait wait10;
-    protected WebDriverWait wait30;
-    protected AndroidDriver androidDriver;
-    protected AppiumDriver driver;
+    private WebDriverWait wait1;
+    private WebDriverWait wait2;
+    private WebDriverWait wait5;
+    private WebDriverWait wait10;
+    private WebDriverWait wait30;
+    private AndroidDriver androidDriver;
+    private AppiumDriver driver;
 
-    protected int defaultImlicityWait;
+    private int defaultImlicityWait;
 
-    public WebActions(String driverMod) throws MalformedURLException {
+    public WebActions(String driverMod){
         //super();
         defaultImlicityWait = 10;
 
-        if (driverMod.equals("WEB"))
-            createWebDriver();
+        switch (driverMod) {
+            case "WEB":
+                createWebDriver();
+                break;
+            case "ANDROID":
+                createAndroidDriver();
+                break;
+            case "IOS":
+                createIOSDriver();
+                break;
+        }
 
-        else if (driverMod.equals("ANDROID"))
-            createAndroidDriver();
-
-        else if (driverMod.equals("IOS"))
-            createIOSDriver();
-
-        else if (driverMod.equals("UIAUTOMATOR2"))
-            createUIAUTOMATOR2Driver();
-
+        assert driver != null;
         wait1 = new WebDriverWait(driver, 1);
         wait2 = new WebDriverWait(driver, 2);
         wait5 = new WebDriverWait(driver, 5);
@@ -54,25 +55,15 @@ public class WebActions {
     }
 
 
-
-
-    public void createUIAUTOMATOR2Driver() {
-
-
-    }
-
     public void waitForAjax() {
 
         try {
 
             ExpectedCondition<Boolean> expectation;
-            expectation = new ExpectedCondition<Boolean>() {
+            expectation = driverjs -> {
 
-                public Boolean apply(WebDriver driverjs) {
-
-                    JavascriptExecutor js = (JavascriptExecutor) driverjs;
-                    return js.executeScript("return((window.jQuery != null) && (jQuery.active === 0))").equals("true");
-                }
+                JavascriptExecutor js = (JavascriptExecutor) driverjs;
+                return js.executeScript("return((window.jQuery != null) && (jQuery.active === 0))").equals("true");
             };
             wait1.until(expectation);
         } catch (TimeoutException exTimeout) {
@@ -84,8 +75,31 @@ public class WebActions {
         }
         //return this;
     }
+//    public void waitForAjax() {
+//
+//        try {
+//
+//            ExpectedCondition<Boolean> expectation;
+//            expectation = new ExpectedCondition<Boolean>() {
+//
+//                public Boolean apply(WebDriver driverjs) {
+//
+//                    JavascriptExecutor js = (JavascriptExecutor) driverjs;
+//                    return js.executeScript("return((window.jQuery != null) && (jQuery.active === 0))").equals("true");
+//                }
+//            };
+//            wait1.until(expectation);
+//        } catch (TimeoutException exTimeout) {
+//
+//            // fail code
+//        } catch (WebDriverException exWebDriverException) {
+//
+//            // fail code
+//        }
+//        //return this;
+//    }
 
-    public void createWebDriver() {
+    private void createWebDriver() {
 
 //        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 //        capabilities.setBrowserName("chrome");
@@ -107,7 +121,7 @@ public class WebActions {
 
     }
 
-    public void createAndroidDriver() {
+    private void createAndroidDriver() {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("appium-version", "1.8.2");//1.9.0
@@ -138,7 +152,7 @@ public class WebActions {
 
     }
 
-    public void createIOSDriver() {
+    private void createIOSDriver() {
         //TO DO
     }
 
@@ -230,6 +244,9 @@ public class WebActions {
     }
 
     public WebElement isPresent(WebElement webElement, int waitTime) {
+
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+
         try {
             WebDriverWait finalWaitTime;
             switch (waitTime) {
@@ -261,9 +278,12 @@ public class WebActions {
             finalWaitTime.until(ExpectedConditions.visibilityOf(webElement));
 
         } catch (Exception e) {
+            driver.manage().timeouts().implicitlyWait(defaultImlicityWait, TimeUnit.SECONDS);
+
             System.out.println("элемент не найден");
             return null;
         }
+        driver.manage().timeouts().implicitlyWait(defaultImlicityWait, TimeUnit.SECONDS);
         System.out.println("элемент найден " + webElement.getAttribute("className"));
         return webElement;
     }
@@ -273,7 +293,6 @@ public class WebActions {
     // придумать как искать элемент не от драйвера и в тоже время использовать средства селениума для проверки видимости visibilityOfelementLocated
     public WebElement isPresent(WebElement searchpoint, By locator, int waitTime) {
 
-//вернуть к исходному виду:
             driver.manage().timeouts().implicitlyWait(waitTime, TimeUnit.SECONDS);
         try {
             if (searchpoint != null)
