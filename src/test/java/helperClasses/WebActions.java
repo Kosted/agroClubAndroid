@@ -32,7 +32,7 @@ public class WebActions {
 
     public WebActions(String driverMod){
         //super();
-        defaultImlicityWait = 10;
+        defaultImlicityWait = 15;
 
         switch (driverMod) {
             case "WEB":
