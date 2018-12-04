@@ -35,10 +35,10 @@ public class LoginPage extends SuperPage {
     public void insertPhoneNumber(String phoneNumber) {
         web_a.waitToBeClickable(phoneField).sendKeys(phoneNumber);
 
-        while (web_a.isPresent(phoneField).getText().length()<17) {
-            web_a.waitToBeClickable(phoneField).clear();
-            web_a.waitToBeClickable(phoneField).sendKeys(phoneNumber);
-        }
+//        while (web_a.isPresent(phoneField).getText().length()<phoneNumber.length()+) {
+//            web_a.waitToBeClickable(phoneField).clear();
+//            web_a.waitToBeClickable(phoneField).sendKeys(phoneNumber);
+//        }
 
     }
 

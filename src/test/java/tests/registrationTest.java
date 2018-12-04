@@ -22,9 +22,9 @@ public class registrationTest extends SuperTest {
 
         loginPage.chousePurchaser();
 
-        loginPage.clickOnPersonalAccept();
-        assertMCS.equalsFalse(userDataAnalisPage.isDocumentEmpty(), " пустое лиц соглашение");
-        userDataAnalisPage.clickOnBackButton();
+//        loginPage.clickOnPersonalAccept();
+//        assertMCS.equalsFalse(userDataAnalisPage.isDocumentEmpty(), " пустое лиц соглашение");
+//        userDataAnalisPage.clickOnBackButton();
 
         loginPage.insertPhoneNumber("904");
 
