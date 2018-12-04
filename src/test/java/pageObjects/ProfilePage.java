@@ -58,7 +58,7 @@ public class ProfilePage extends SuperPage {
 
     public void insertFullName(String fullName) {
         web_a.waitToBeClickable(fullNameField).clear();
-        web_a.waitToBeClickable(fullNameField).sendKeys(fullName);
+        web_a.insertTextOnAndroidEditTextField(fullNameField,fullName);
     }
 
     public String getFullName() {
@@ -79,7 +79,7 @@ public class ProfilePage extends SuperPage {
 
     public void insertEmail(String email) {
         web_a.waitToBeClickable(emailField).clear();
-        web_a.waitToBeClickable(emailField).sendKeys(email);
+        web_a.insertTextOnAndroidEditTextField(emailField,email);
     }
 
     public void clickOnBackButton() {
