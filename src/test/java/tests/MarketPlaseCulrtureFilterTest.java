@@ -28,20 +28,19 @@ public class MarketPlaseCulrtureFilterTest extends SuperTest {
             List<WebElement> visableCulture = marcetplacePage.getVisableCulture();
 
             for (int i=0; i<visableCulture.size(); i++/*WebElement cultureElem : visableCulture*/) {
-                for (WebElement print : visableCulture)
 
-                    System.out.println(print.getText());
                 visableCulture = marcetplacePage.getVisableCulture();
 
-                for (WebElement print : visableCulture)
-                    System.out.println(print.getText());
-
                 String culture = visableCulture.get(i).getText();
+
                 if (!cultureAssertList.contains(culture)) {
                     cultureAssertList.add(marcetplacePage.chouseCulturefilter(culture));
                     assertMCS.equalsTrue(marketFilterPage.getTitle().equals(culture), "название заголовка " +
                             marketFilterPage.getTitle() + " страницы не соответствует выбранному фильтру " + culture);
-                    assertMCS.equalsTrue(marketFilterPage.getShortMarcetPlaseDeclaration(0).getCultureName().equals(culture), "первая культура " +
+
+                    ShortMarcetPlaseDeclaration shortMarcetPlaseDeclaration = marketFilterPage.getShortMarcetPlaseDeclaration(0);
+                    if (shortMarcetPlaseDeclaration!=null)
+                    assertMCS.equalsTrue(shortMarcetPlaseDeclaration.getCultureName().equals(culture), "первая культура " +
                             marketFilterPage.getShortMarcetPlaseDeclaration(0).getCultureName() + " не соответствует выбранному фильтру " + culture);
                     marketFilterPage.clickOnBackButton();
                 }

@@ -107,8 +107,7 @@ public class MarcetplacePage extends MainAgroPage {
                 break;
             }
         }
-
-
+        System.out.println("swipe " + direction);
     }
 
     public void clickOnBackButton() {
