@@ -53,7 +53,12 @@ public class MarketFilterPage extends MainAgroPage {
 
     public ShortMarcetPlaseDeclaration getShortMarcetPlaseDeclaration(int position) {
         List<WebElement> elements = declarationWebList.findElements(By.className("android.view.ViewGroup"));
-        return new ShortMarcetPlaseDeclaration(web_a, elements.get(position));
+        if (elements.size()>position)
+            return new ShortMarcetPlaseDeclaration(web_a, elements.get(position));
+        else {
+            System.out.println("в списке нет предложения с позицией " + position);
+            return null;
+        }
     }
 
 

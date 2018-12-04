@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 //import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,6 +27,8 @@ public class WebActions {
     private WebDriverWait wait30;
     private AndroidDriver androidDriver;
     private AppiumDriver driver;
+    private Date date;
+
 
     private int defaultImlicityWait;
 
@@ -52,6 +55,7 @@ public class WebActions {
         wait10 = new WebDriverWait(driver, 10);
         wait30 = new WebDriverWait(driver, 30);
 
+        date = new Date();
     }
 
 
@@ -199,10 +203,10 @@ public class WebActions {
         try {
             waitToBeClickable(webElement);
         } catch (Exception e) {
-            System.out.println(webElement.getAttribute("className")+"не был кликабелен и нажат элемент");
+            System.out.println(date.toString()+" " + webElement.getAttribute("className")+"не был кликабелен и нажат элемент");
             return false;
         }
-        System.out.println(webElement.getAttribute("className") + " был кликабелен и нажат");
+        System.out.println(date.toString()+" "+webElement.getAttribute(  "className") + " был кликабелен и нажат");
         webElement.click();
         return true;
     }
@@ -280,11 +284,11 @@ public class WebActions {
         } catch (Exception e) {
             driver.manage().timeouts().implicitlyWait(defaultImlicityWait, TimeUnit.SECONDS);
 
-            System.out.println("элемент не найден");
+            System.out.println(date.toString() + " элемент не найден");
             return null;
         }
         driver.manage().timeouts().implicitlyWait(defaultImlicityWait, TimeUnit.SECONDS);
-        System.out.println("элемент найден " + webElement.getAttribute("className"));
+        System.out.println(date.toString() +  " элемент найден " + webElement.getAttribute("className"));
         return webElement;
     }
 
@@ -302,12 +306,12 @@ public class WebActions {
             driver.manage().timeouts().implicitlyWait(defaultImlicityWait, TimeUnit.SECONDS);
 
         } catch (Exception e) {
-            System.out.println("элемент не найден");
+            System.out.println(date.toString() +  " элемент не найден");
             driver.manage().timeouts().implicitlyWait(defaultImlicityWait, TimeUnit.SECONDS);
             return null;
         }
         driver.manage().timeouts().implicitlyWait(defaultImlicityWait, TimeUnit.SECONDS);
-        System.out.println("элемент найден");
+        System.out.println(date.toString() +  " элемент найден");
         if (searchpoint != null)
             return searchpoint.findElement(locator);
         else return driver.findElement(locator);
@@ -318,10 +322,10 @@ public class WebActions {
         try {
             wait10.until(ExpectedConditions.visibilityOf(webElement));
         } catch (Exception e) {
-            System.out.println("элемент не найден");
+            System.out.println(date.toString() +  " элемент не найден");
             return null;
         }
-        System.out.println("элемент найден " + webElement.getAttribute("className"));
+        System.out.println(date.toString() + " элемент найден " + webElement.getAttribute("className"));
         return webElement;
     }
 
