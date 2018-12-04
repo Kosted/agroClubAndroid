@@ -202,7 +202,7 @@ public class WebActions {
         try {
             waitToBeClickable(webElement);
         } catch (Exception e) {
-            System.out.println(new Date().toString()+" " + webElement.getAttribute("className")+"не был кликабелен и нажат элемент");
+            System.out.println(new Date().toString() +" не был кликабелен и нажат элемент");
             return false;
         }
         System.out.println(new Date().toString()+" "+webElement.getAttribute(  "className") + " был кликабелен и нажат");

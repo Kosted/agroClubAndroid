@@ -42,7 +42,7 @@ public class RegistrationPage extends SuperPage {
     public void insertEmail(String email) {
 
         web_a.waitToBeClickable(emailField).clear();
-        web_a.waitToBeClickable(emailField).sendKeys(email);
+        web_a.insertTextOnAndroidEditTextField(emailField,email);
     }
 
     public void clickOnSaveButton() {
