@@ -17,7 +17,7 @@ public class MarketPlaseCulrtureFilterTest extends SuperTest {
     }
 
     @Test
-    public void exampleTest() {
+    public void marketPlaseCulrtureFilterTest() {
         welcomePage.skipWelcomeTour();
 
         autorization("9054733762", 1);
@@ -41,7 +41,7 @@ public class MarketPlaseCulrtureFilterTest extends SuperTest {
                     ShortMarcetPlaseDeclaration shortMarcetPlaseDeclaration = marketFilterPage.getShortMarcetPlaseDeclaration(0);
                     if (shortMarcetPlaseDeclaration!=null)
                     assertMCS.equalsTrue(shortMarcetPlaseDeclaration.getCultureName().equals(culture), "первая культура " +
-                            marketFilterPage.getShortMarcetPlaseDeclaration(0).getCultureName() + " не соответствует выбранному фильтру " + culture);
+                            shortMarcetPlaseDeclaration.getCultureName() + " не соответствует выбранному фильтру " + culture);
                     marketFilterPage.clickOnBackButton();
                 }
             }

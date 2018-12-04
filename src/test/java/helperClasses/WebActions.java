@@ -205,9 +205,7 @@ public class WebActions {
             System.out.println(new Date().toString()+" " + webElement.getAttribute("className")+"не был кликабелен и нажат элемент");
             return false;
         }
-        System.out.println(new Date(
-
-        ).toString()+" "+webElement.getAttribute(  "className") + " был кликабелен и нажат");
+        System.out.println(new Date().toString()+" "+webElement.getAttribute(  "className") + " был кликабелен и нажат");
         webElement.click();
         return true;
     }
