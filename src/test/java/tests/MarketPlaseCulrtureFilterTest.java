@@ -34,7 +34,8 @@ public class MarketPlaseCulrtureFilterTest extends SuperTest {
                 String culture = visableCulture.get(i).getText();
 
                 if (!cultureAssertList.contains(culture)) {
-                    cultureAssertList.add(marcetplacePage.chouseCulturefilter(culture));
+                    marcetplacePage.chouseCulturefilter(culture);
+                    cultureAssertList.add(culture);
                     assertMCS.equalsTrue(marketFilterPage.getTitle().equals(culture), "название заголовка " +
                             marketFilterPage.getTitle() + " страницы не соответствует выбранному фильтру " + culture);
 

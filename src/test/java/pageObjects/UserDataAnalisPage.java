@@ -31,10 +31,10 @@ public class UserDataAnalisPage extends SuperPage {
     }
 
     public Boolean isDocumentEmpty() {
-        List<WebElement> dockument = textWall.findElement(By.className("android.view.View")).findElements(By.className("android.view.View"));
+        List<WebElement> document = web_a.isPresent(textWall).findElement(By.className("android.view.View")).findElements(By.className("android.view.View"));
         for (int i = 0; i < 3; i++) {
 
-            if (dockument.get(i).getText().equals(""))
+            if (document.get(i).getText().equals(""))
                 return true;
         }
         return false;
