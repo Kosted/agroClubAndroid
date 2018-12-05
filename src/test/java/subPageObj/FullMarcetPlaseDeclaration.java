@@ -18,6 +18,7 @@ public class FullMarcetPlaseDeclaration {
     private String attributes;
     private String cultureName;
     private String distance;
+    private String nds;
 
     private String myPriceWithoutLogistic;
     private String myPriceWithLogistic;
@@ -88,6 +89,10 @@ public class FullMarcetPlaseDeclaration {
 
 
                         this.myPriceWithLogistic = viewElem.findElement(By.id("ru.agroclub:id/tvLogistic")).getText();
+
+                        WebElement nds = web_a.isPresent(viewElem, By.id("ru.agroclub:id/tvNds"), 2);
+                        if (nds!= null)
+                        this.nds = nds.getText();
 
                         this.myPriceWithoutLogistic = textViewElements.get(1).getText();
                         this.priceWithDeliverySeller = textViewElements.get(4).getText();
