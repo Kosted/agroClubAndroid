@@ -53,18 +53,29 @@ public class MarketChousFilterPage extends MainAgroPage {
         web_a.waitToBeClickableAndClick(defaultFiltersButton);
     }
 
-    public String setFilter(String property, String value, Integer position) {
+    public String setFilter(String property, String value, String sign) {
         if (property == null) {
-
+            return null;
         } else {
             WebElement parentPropertyField = getPropertyField(property);
 
-            if (web_a.isPresent(parentPropertyField,By.id("ru.agroclub:id/spinner"),3)!=null){
+            if (web_a.isPresent(parentPropertyField, By.id("ru.agroclub:id/spinner"), 3) != null) {
                 web_a.waitToBeClickableAndClick(parentPropertyField);
-                parentPropertyField.findElement(By.xpath("//*[@text='"+value+"']")).click();
-
-            }else{
-
+                parentPropertyField.findElement(By.xpath("//*[@text='" + value + "']")).click();
+                return property;
+            } else {
+                web_a.insertTextOnAndroidEditTextField(parentPropertyField, value);
+                switch (sign) {
+                    case "less": {
+                        web_a.waitToBeClickableAndClick(parentPropertyField.findElement(By.id("ru.agroclub:id/tvLess")));
+                        break;
+                    }
+                    case "more": {
+                        web_a.waitToBeClickableAndClick(parentPropertyField.findElement(By.id("ru.agroclub:id/tvMore")));
+                        break;
+                    }
+                }
+                return property;
             }
 
 

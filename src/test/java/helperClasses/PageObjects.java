@@ -25,6 +25,7 @@ public class PageObjects {
     protected static MyAddressPage myAddressPage;
     protected static ProfilePage profilePage;
     protected static MarketFilterPage marketFilterPage;
+    protected static MarketChousFilterPage marketChousFilterPage;
 
 
     private WebActions web_a;
