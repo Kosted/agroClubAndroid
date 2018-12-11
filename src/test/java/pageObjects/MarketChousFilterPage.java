@@ -83,7 +83,7 @@ public class MarketChousFilterPage extends MainAgroPage {
 
     }
 
-    public WebElement getPropertyField(String fieldName) {
+    private WebElement getPropertyField(String fieldName) {
 
         List<WebElement> fieldsList;
         String currentFieldsName = "";

@@ -66,6 +66,7 @@ public class MarketFilterPage extends MainAgroPage {
     public void clickOnBackButton(){
         web_a.waitToBeClickableAndClick(backButton);
     }
+
     public void clickOnFilterButton(){
         web_a.waitToBeClickableAndClick(filterButton);
     }
