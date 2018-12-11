@@ -64,7 +64,7 @@ public class MarketChousFilterPage extends MainAgroPage {
 
                 web_a.isPresent(null, By.xpath("//*[@text='" + value + "']"), 3).click();
 
-               // parentPropertyField.findElement(By.xpath("//*[@text='" + value + "']")).click();
+                // parentPropertyField.findElement(By.xpath("//*[@text='" + value + "']")).click();
 
                 return property;
             } else {
@@ -98,8 +98,10 @@ public class MarketChousFilterPage extends MainAgroPage {
             fieldsList = filtersWebList.findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup"));
 
             for (WebElement webElement : fieldsList) {
-
-                currentFieldsName = webElement.findElement(By.className("android.widget.TextView")).getText();
+                if (web_a.isPresent(webElement, By.className("android.widget.EditText"), 1) != null)
+                    currentFieldsName = web_a.isPresent(webElement, By.className("android.widget.EditText"), 1).getText();
+                else
+                    currentFieldsName = webElement.findElement(By.className("android.widget.TextView")).getText();
 
                 if (currentFieldsName.equals(fieldName)) {
                     return webElement;
