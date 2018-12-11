@@ -47,6 +47,7 @@ public class PageObjects {
         profilePage = new ProfilePage(web_a);
         myAddressPage = new MyAddressPage(web_a);
         marketFilterPage = new MarketFilterPage(web_a);
+        marketChousFilterPage = new MarketChousFilterPage(web_a);
 
     }
 
