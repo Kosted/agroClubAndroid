@@ -43,7 +43,12 @@ public class ExampleTest extends SuperTest {
 
         marketFilterPage.clickOnFilterButton();
 
-        marketChousFilterPage.setFilter("НДС","Есть" ,null);
+        marketChousFilterPage.setFilter("Протеин(белок), %","11" ,"less");
+        marketChousFilterPage.clickOnConfirmButton();
+
+ marketFilterPage.clickOnFilterButton();
+
+        marketChousFilterPage.setFilter("Число падения, с","12" ,"more");
         marketChousFilterPage.clickOnConfirmButton();
 
     //    ShortMarcetPlaseDeclaration shortMarcetPlaseDeclaration = marcetplacePage.getShortMarcetPlaseDeclaration(0);

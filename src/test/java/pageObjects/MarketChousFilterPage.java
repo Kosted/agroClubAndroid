@@ -62,7 +62,7 @@ public class MarketChousFilterPage extends MainAgroPage {
             if (web_a.isPresent(parentPropertyField, By.id("ru.agroclub:id/spinner"), 3) != null) {
                 web_a.waitToBeClickableAndClick(parentPropertyField);
 
-                web_a.isPresent(null, By.xpath("//*[@text='" + value + "']"), 3);
+                web_a.isPresent(null, By.xpath("//*[@text='" + value + "']"), 3).click();
 
                // parentPropertyField.findElement(By.xpath("//*[@text='" + value + "']")).click();
 
