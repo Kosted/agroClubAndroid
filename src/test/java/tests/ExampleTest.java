@@ -39,7 +39,7 @@ public class ExampleTest extends SuperTest {
 //        priceUpdatePage.clickOnConfirmButton();
 
 
-        marcetplacePage.chouseCulturefilter("Рожь");
+        marcetplacePage.chouseCulturefilter("Пшеница 5 класс");
 
         marketFilterPage.clickOnFilterButton();
 
