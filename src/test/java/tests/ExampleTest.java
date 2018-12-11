@@ -22,6 +22,7 @@ public class ExampleTest extends SuperTest {
     public void exampleTest() {
         welcomePage.skipWelcomeTour();
         autorization("9054733762", 1);
+        priceUpdatePage.clickOnConfirmButton();
 
        // loginPage.assertion();
 
