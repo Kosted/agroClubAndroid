@@ -4,6 +4,8 @@ import helperClasses.WebActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.Objects;
+
 public class ShortMarcetPlaseDeclaration {
 
     private String declarationType;
@@ -91,5 +93,25 @@ public class ShortMarcetPlaseDeclaration {
 
     public String getPriceSeller() {
         return priceSeller;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ShortMarcetPlaseDeclaration)) return false;
+        ShortMarcetPlaseDeclaration that = (ShortMarcetPlaseDeclaration) o;
+        return Objects.equals(getDeclarationType(), that.getDeclarationType()) &&
+                Objects.equals(getPriceWithDeliverySeller(), that.getPriceWithDeliverySeller()) &&
+                Objects.equals(getPriceSign(), that.getPriceSign()) &&
+                Objects.equals(getCultureName(), that.getCultureName()) &&
+                Objects.equals(getMainAttribute(), that.getMainAttribute()) &&
+                Objects.equals(getVolume(), that.getVolume()) &&
+                Objects.equals(getDistance(), that.getDistance()) &&
+                Objects.equals(getPriceSeller(), that.getPriceSeller());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDeclarationType(), getPriceWithDeliverySeller(), getPriceSign(), getCultureName(), getMainAttribute(), getVolume(), getDistance(), getPriceSeller());
     }
 }

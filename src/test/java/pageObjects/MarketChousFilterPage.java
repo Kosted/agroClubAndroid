@@ -29,7 +29,7 @@ public class MarketChousFilterPage extends MainAgroPage {
 
     public MarketChousFilterPage(WebActions webActions) {
         super(webActions);
-        swipedFiltersDown = new Swipe(web_a, 50, 73, 50, 45, 1000);
+        swipedFiltersDown = new Swipe(web_a, 50, 73, 50, 45, 600);
     }
 
     public String getTitle() {
@@ -59,7 +59,7 @@ public class MarketChousFilterPage extends MainAgroPage {
         } else {
             WebElement parentPropertyField = getPropertyField(property);
 
-            if (web_a.isPresent(parentPropertyField, By.id("ru.agroclub:id/spinner"), 3) != null) {
+            if (web_a.isPresent(parentPropertyField, By.id("ru.agroclub:id/spinner"), 1) != null) {
                 web_a.waitToBeClickableAndClick(parentPropertyField);
 
                 web_a.isPresent(null, By.xpath("//*[@text='" + value + "']"), 3).click();
