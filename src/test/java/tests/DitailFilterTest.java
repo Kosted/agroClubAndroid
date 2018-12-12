@@ -46,9 +46,9 @@ public class DitailFilterTest extends SuperTest {
         ShortMarcetPlaseDeclaration secondShortMarcetPlaseDeclaration = marketFilterPage.getShortMarcetPlaseDeclaration(0);
 
         if (firstShortMarcetPlaseDeclaration.equals(secondShortMarcetPlaseDeclaration))
-            assertMCS.equalsTrue(Integer.parseInt(firstShortMarcetPlaseDeclaration.getMainAttribute())<=11, "была оставлена карточка не соответствующая фильтру.");
+            assertMCS.equalsTrue(Integer.parseInt(firstShortMarcetPlaseDeclaration.getMainAttribute().replaceAll("[^0-9]+",""))<=11, "была оставлена карточка не соответствующая фильтру.");
         else
-            assertMCS.equalsTrue(Integer.parseInt(secondShortMarcetPlaseDeclaration.getMainAttribute())<=11, "была выведена карточка не соответствующая фильтру.");
+            assertMCS.equalsTrue(Integer.parseInt(secondShortMarcetPlaseDeclaration.getMainAttribute().replaceAll("[^0-9]+",""))<=11, "была выведена карточка не соответствующая фильтру.");
 
 
 
