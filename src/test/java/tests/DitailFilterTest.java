@@ -25,21 +25,17 @@ public class DitailFilterTest extends SuperTest {
 
     }
 
-    @Parameterized.Parameter
-    public String culture;
-    @Parameterized.Parameter(1)
-    public String mainProperty;
-    @Parameterized.Parameter(2)
-    public String value;
-    @Parameterized.Parameter(3)
-    public String sign;
+    private String culture;
+    private String mainProperty;
+    private String value;
+    private String sign;
 
-    public DitailFilterTest(/*String culture, String mainProperty, String value, String sign,*/ WebActions web_a) {
-        super(web_a);
-        /*this.culture = culture;
+    public DitailFilterTest(String culture, String mainProperty, String value, String sign/*, WebActions web_a*/) {
+        /*super(web_a);*/
+        this.culture = culture;
         this.mainProperty = mainProperty;
         this.value = value;
-        this.sign = sign;*/
+        this.sign = sign;
     }
 
 
@@ -47,7 +43,6 @@ public class DitailFilterTest extends SuperTest {
     @Test
     public void ditailFilterTest() {
         welcomePage.skipWelcomeTour();
-
         registration(null, null, null);
 
         // loginPage.assertion();

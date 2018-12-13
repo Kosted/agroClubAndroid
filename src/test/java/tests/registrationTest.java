@@ -10,7 +10,7 @@ public class registrationTest extends SuperTest {
 
 
         public registrationTest() {
-            super(web_a);
+            //super(web_a);
         }
 
         @Test

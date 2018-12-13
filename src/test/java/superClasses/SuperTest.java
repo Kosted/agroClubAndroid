@@ -27,12 +27,12 @@ public abstract class SuperTest extends PageObjects {
 
     protected static AssertMCS assertMCS;
 
-    public SuperTest(WebActions web_a) {
+    public SuperTest() {
         super(web_a);
     }
 
     @BeforeClass
-    public static void init() throws MalformedURLException {
+    public static void init() {
         System.setProperty("webdriver.chrome.driver", "/home/k.malev/librarys/chromedriver");
         web_a = new WebActions("ANDROID");
         driver = web_a.getDriver();

@@ -10,7 +10,7 @@ public class ProfileTest extends SuperTest {
 
 
     public ProfileTest() {
-        super(web_a);
+        //super(web_a);
     }
 
     @Test

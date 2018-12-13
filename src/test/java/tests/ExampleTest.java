@@ -15,7 +15,7 @@ public class ExampleTest extends SuperTest {
 
 
     public ExampleTest() {
-        super(web_a);
+       // super(web_a);
     }
 
     @Test

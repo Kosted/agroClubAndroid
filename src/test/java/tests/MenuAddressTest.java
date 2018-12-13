@@ -8,7 +8,7 @@ public class MenuAddressTest extends SuperTest {
 
 
     public MenuAddressTest() {
-        super(web_a);
+        //super(web_a);
     }
 
     @Test

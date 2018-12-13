@@ -13,7 +13,7 @@ public class MarketPlaseCulrtureFilterTest extends SuperTest {
 
 
     public MarketPlaseCulrtureFilterTest() {
-        super(web_a);
+        //super(web_a);
     }
 
     @Test
