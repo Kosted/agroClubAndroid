@@ -21,8 +21,8 @@ public class DitailFilterTest extends SuperTest {
         return Arrays.asList(new Object[][]{
 
                 {"Пшеница 5 класс", "Протеин(белок), %", "11", "less"},
-                {"Пшеница 5 класс", "НДС", "Есть", null},
-                {"Рожь", "Влажность, %", "12", "more"}
+                {"Рожь", "Влажность, %", "12", "more"},
+                {"Пшеница 5 класс", "НДС", "Есть", null}
         });
 
     }
@@ -117,7 +117,7 @@ public class DitailFilterTest extends SuperTest {
 
 
         }
-
+marketFilterPage.clickOnBackButton();
 
         //ShortMarcetPlaseDeclaration secondShortMarcetPlaseDeclaration = marketFilterPage.getShortMarcetPlaseDeclaration(0);
 
