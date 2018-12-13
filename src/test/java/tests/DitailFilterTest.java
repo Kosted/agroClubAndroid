@@ -25,17 +25,21 @@ public class DitailFilterTest extends SuperTest {
 
     }
 
-    private String culture;
-    private String mainProperty;
-    private String value;
-    private String sign;
+    @Parameterized.Parameter
+    public String culture;
+    @Parameterized.Parameter(1)
+    public String mainProperty;
+    @Parameterized.Parameter(2)
+    public String value;
+    @Parameterized.Parameter(3)
+    public String sign;
 
-    public DitailFilterTest(String culture, String mainProperty, String value, String sign, WebActions web_a) {
+    public DitailFilterTest(/*String culture, String mainProperty, String value, String sign,*/ WebActions web_a) {
         super(web_a);
-        this.culture = culture;
+        /*this.culture = culture;
         this.mainProperty = mainProperty;
         this.value = value;
-        this.sign = sign;
+        this.sign = sign;*/
     }
 
 
