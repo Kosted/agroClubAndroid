@@ -71,6 +71,10 @@ public class LoginPage extends SuperPage {
         Assert.assertTrue("отсутствует кнопка гостевого входа",guestLoginButton!=null);
     }
 
+    public Boolean currentPage(){
+        return web_a.isPresent(loginButton, 2)!=null;
+    }
+
     public Boolean loginButtonIsEnabled(){
         return loginButton.isEnabled();
     }

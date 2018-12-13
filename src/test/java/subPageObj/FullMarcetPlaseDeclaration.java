@@ -15,7 +15,7 @@ public class FullMarcetPlaseDeclaration {
     private String requestId;
     private String declarationType;
     private String volume;
-    private String attributes;
+    private String[] attributes;
     private String cultureName;
     private String distance;
     private String nds;
@@ -91,8 +91,8 @@ public class FullMarcetPlaseDeclaration {
                         this.myPriceWithLogistic = viewElem.findElement(By.id("ru.agroclub:id/tvLogistic")).getText();
 
                         WebElement nds = web_a.isPresent(viewElem, By.id("ru.agroclub:id/tvNds"), 2);
-                        if (nds!= null)
-                        this.nds = nds.getText();
+                        if (nds != null)
+                            this.nds = nds.getText();
 
                         this.myPriceWithoutLogistic = textViewElements.get(1).getText();
                         this.priceWithDeliverySeller = textViewElements.get(4).getText();
@@ -101,8 +101,11 @@ public class FullMarcetPlaseDeclaration {
                         break;
                     }
                     case "Показатели": {
-                        if (textViewElements.size() > 1)
-                            this.attributes = textViewElements.get(1).getText();
+                        if (textViewElements.size() > 1) {
+
+
+                            this.attributes = textViewElements.get(1).getText().split("\n");
+                        }
                         break;
                     }
                     case "Условия оплаты": {
@@ -125,5 +128,58 @@ public class FullMarcetPlaseDeclaration {
         }
     }
 
+    public String getToolbarTitle() {
+        return toolbarTitle;
+    }
 
+    public String getRequestId() {
+        return requestId;
+    }
+
+    public String getDeclarationType() {
+        return declarationType;
+    }
+
+    public String getVolume() {
+        return volume;
+    }
+
+    public Integer getAttribute(String attributeName) {
+        for (String attributeElem : attributes)
+            if (attributeElem.contains(attributeName))
+                return Integer.parseInt(attributeElem.replaceAll("[^0-9]+", ""));
+        return null;
+    }
+
+    public String getCultureName() {
+        return cultureName;
+    }
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public String getNds() {
+        return nds;
+    }
+
+    public String getMyPriceWithoutLogistic() {
+        return myPriceWithoutLogistic;
+    }
+
+    public String getMyPriceWithLogistic() {
+        return myPriceWithLogistic;
+    }
+
+    public String getPriceWithDeliverySeller() {
+        return priceWithDeliverySeller;
+    }
+
+    public String getFirstTermsOfPayment() {
+        return firstTermsOfPayment;
+    }
+
+    public String getSecondTermsOfPayment() {
+        return secondTermsOfPayment;
+    }
 }

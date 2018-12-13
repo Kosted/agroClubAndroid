@@ -48,18 +48,18 @@ public class MarcetplacePage extends MainAgroPage {
 
     public FullMarcetPlaseDeclaration chouseDeclaration(int position, Boolean doOffer) {
         declarationWebList.findElements(By.className("android.view.ViewGroup")).get(position).click();
+        FullMarcetPlaseDeclaration fullMarcetPlaseDeclaration = new FullMarcetPlaseDeclaration(web_a);
         if (doOffer) {
-            FullMarcetPlaseDeclaration fullMarcetPlaseDeclaration = new FullMarcetPlaseDeclaration(web_a);
             web_a.waitToBeClickableAndClick(doOfferButton);
-            return fullMarcetPlaseDeclaration;
         } else
-            return new FullMarcetPlaseDeclaration(web_a);
+            clickOnBackButton();
+        return fullMarcetPlaseDeclaration;
     }
 
     public ShortMarcetPlaseDeclaration getShortMarcetPlaseDeclaration(int position) {
         List<WebElement> elements = declarationWebList.findElements(By.className("android.view.ViewGroup"));
-        if (elements.size()>position)
-        return new ShortMarcetPlaseDeclaration(web_a, elements.get(position));
+        if (elements.size() > position)
+            return new ShortMarcetPlaseDeclaration(web_a, elements.get(position));
         else {
             System.out.println("в списке нет предложения с позицией " + position);
             return null;

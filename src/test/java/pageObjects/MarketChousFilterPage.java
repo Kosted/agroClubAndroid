@@ -93,7 +93,7 @@ public class MarketChousFilterPage extends MainAgroPage {
         String currentFieldsName = "";
         int swipeCount = 5;
 
-        while (!currentFieldsName.equals(fieldName)) {
+        while (!currentFieldsName.contains(fieldName)) {
 
             fieldsList = filtersWebList.findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup"));
 
@@ -103,7 +103,7 @@ public class MarketChousFilterPage extends MainAgroPage {
                 else
                     currentFieldsName = webElement.findElement(By.className("android.widget.TextView")).getText();
 
-                if (currentFieldsName.equals(fieldName)) {
+                if (currentFieldsName.contains(fieldName)) {
                     return webElement;
 
                 }
