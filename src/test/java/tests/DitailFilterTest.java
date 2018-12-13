@@ -17,22 +17,20 @@ public class DitailFilterTest extends SuperTest {
     @Parameters
     public static Collection<Object[]> data() {
 
-        Object[][] data = new Object[][]{
+        return Arrays.asList(new Object[][]{
 
                 {"Пшеница 5 класс", "Протеин(белок), %", "11", "less"},
                 {"Рожь", "Влажность, %", "12", "more"}
-        };
-
-        return Arrays.asList(data);
+        });
 
     }
 
-    String culture;
-    String mainProperty;
-    String value;
-    String sign;
+    private String culture;
+    private String mainProperty;
+    private String value;
+    private String sign;
 
-    public DitailFilterTest(WebActions web_a, String culture, String mainProperty, String value, String sign) {
+    public DitailFilterTest(String culture, String mainProperty, String value, String sign, WebActions web_a) {
         super(web_a);
         this.culture = culture;
         this.mainProperty = mainProperty;
