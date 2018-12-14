@@ -42,13 +42,21 @@ public class MarketFilterPage extends MainAgroPage {
     }
 
     public FullMarcetPlaseDeclaration chouseDeclaration(int position, Boolean doOffer) {
-        declarationWebList.findElements(By.className("android.view.ViewGroup")).get(position).click();
-        FullMarcetPlaseDeclaration fullMarcetPlaseDeclaration = new FullMarcetPlaseDeclaration(web_a);
-        if (doOffer) {
-            web_a.waitToBeClickableAndClick(doOfferButton);
-        } else
-            clickOnBackButton();
-        return fullMarcetPlaseDeclaration;
+
+        List<WebElement> elements = declarationWebList.findElements(By.className("android.view.ViewGroup"));
+        if (elements.size() > position) {
+
+            elements.get(position).click();
+            FullMarcetPlaseDeclaration fullMarcetPlaseDeclaration = new FullMarcetPlaseDeclaration(web_a);
+
+            if (doOffer) {
+                web_a.waitToBeClickableAndClick(doOfferButton);
+            } else
+                clickOnBackButton();
+
+            return fullMarcetPlaseDeclaration;
+        }
+        return null;
     }
 
     public ShortMarcetPlaseDeclaration getShortMarcetPlaseDeclaration(int position) {

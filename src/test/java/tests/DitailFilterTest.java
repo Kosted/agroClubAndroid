@@ -20,8 +20,8 @@ public class DitailFilterTest extends SuperTest {
 
         return Arrays.asList(new Object[][]{
 
-                {"Пшеница 5 класс", "Протеин(белок), %", "11", "less"},
-                {"Рожь", "Влажность, %", "12", "more"},
+                {"Пшеница 5 класс", "Протеин(белок)", "11", "less"},
+                {"Рожь", "Влажность", "12", "more"},
                 {"Пшеница 5 класс", "НДС", "Есть", null}
         });
 
@@ -76,6 +76,8 @@ public class DitailFilterTest extends SuperTest {
 
         FullMarcetPlaseDeclaration[] filterResult = new FullMarcetPlaseDeclaration[3];
 
+        assertMCS.setStandartErrorMessege(culture + " " + property + " " + value + " " + sign + " ");
+
         FullMarcetPlaseDeclaration fullMarcetPlaseDeclaration;
         for (int i = 0; i < 3; i++) {
             //filterResult[i] = marketFilterPage.chouseDeclaration(0, false);
@@ -117,7 +119,7 @@ public class DitailFilterTest extends SuperTest {
 
 
         }
-marketFilterPage.clickOnBackButton();
+        marketFilterPage.clickOnBackButton();
 
         //ShortMarcetPlaseDeclaration secondShortMarcetPlaseDeclaration = marketFilterPage.getShortMarcetPlaseDeclaration(0);
 
