@@ -21,8 +21,8 @@ public class DitailFilterTest extends SuperTest {
         return Arrays.asList(new Object[][]{
 
                 {"Пшеница 5 класс", "Протеин(белок)", "11", "less"},
-                {"Рожь", "Влажность", "12", "more"},
-                {"Пшеница 5 класс", "НДС", "Есть", null}
+                {"Пшеница 5 класс", "НДС", "Есть", null},
+                {"Рожь", "Влажность", "12", "more"}
         });
 
     }
@@ -44,7 +44,8 @@ public class DitailFilterTest extends SuperTest {
     public void ditailFilterTest() {
         welcomePage.skipWelcomeTour();
         if (loginPage.currentPage())
-            registration(null, null, null);
+            //registration(null, null, null);
+            autorization("9054733762", 1);
 
         // loginPage.assertion();
 
@@ -76,7 +77,7 @@ public class DitailFilterTest extends SuperTest {
 
         FullMarcetPlaseDeclaration[] filterResult = new FullMarcetPlaseDeclaration[3];
 
-        assertMCS.setStandartErrorMessege(culture + " " + property + " " + value + " " + sign + " ");
+        assertMCS.setStandartErrorMessege(" " + culture + ", " + property + ", " + value + ", " + sign + " ");
 
         FullMarcetPlaseDeclaration fullMarcetPlaseDeclaration;
         for (int i = 0; i < 3; i++) {
@@ -99,7 +100,7 @@ public class DitailFilterTest extends SuperTest {
                         }
                         case "НДС": {
                             if (value.equals("Есть"))
-                                assertMCS.equalsFalse(fullMarcetPlaseDeclaration.getNds() != null, "была выведена карточка не соответствующая фильтру.");
+                                assertMCS.equalsTrue(fullMarcetPlaseDeclaration.getNds() != null, "была выведена карточка не соответствующая фильтру.");
                             else
                                 assertMCS.equalsTrue(fullMarcetPlaseDeclaration.getNds() == null, "была выведена карточка не соответствующая фильтру.");
 
@@ -107,7 +108,7 @@ public class DitailFilterTest extends SuperTest {
                         }
                         case "Условия оплаты": {
                             if (value.equals("Предоплата"))
-                                assertMCS.equalsFalse(fullMarcetPlaseDeclaration.getFirstTermsOfPayment().equals("-"), "была выведена карточка не соответствующая фильтру.");
+                                assertMCS.equalsTrue(fullMarcetPlaseDeclaration.getFirstTermsOfPayment().equals("-"), "была выведена карточка не соответствующая фильтру.");
                             else
                                 assertMCS.equalsFalse(fullMarcetPlaseDeclaration.getSecondTermsOfPayment().equals("-"), "была выведена карточка не соответствующая фильтру.");
 
