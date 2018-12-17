@@ -102,9 +102,9 @@ public class MarcetplacePage extends MainAgroPage {
     public List<WebElement> getVisableCulture() {
 //if (web_a.isPresent(null, By.id("ru.agroclub:id/rvCrop"),5)!= null))
         if (currentPage())
-        return cultureFilterWebList.findElements(By.className("android.widget.TextView"));
-else
-    return null;
+            return cultureFilterWebList.findElements(By.className("android.widget.TextView"));
+        else
+            return null;
     }
 
     public void swipeСulture(String direction) {

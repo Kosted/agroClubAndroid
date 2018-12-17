@@ -43,11 +43,12 @@ public class DitailFilterTest extends SuperTest {
     @Test
     public void ditailFilterTest() {
         welcomePage.skipWelcomeTour();
-        if (loginPage.currentPage())
+        if (loginPage.currentPage()) {
             //registration(null, null, null);
             autorization("9054733762", 1);
 
-        priceUpdatePage.clickOnConfirmButton();
+            priceUpdatePage.clickOnConfirmButton();
+        }
         // loginPage.assertion();
 
         //loginPage.chousePurchaser();
@@ -88,7 +89,7 @@ public class DitailFilterTest extends SuperTest {
             if (fullMarcetPlaseDeclaration != null) {
 
                 if (sign != null)
-                    assertMCS.equalsTrue(fullMarcetPlaseDeclaration.getAttribute(property) <= Integer.getInteger(value), "была выведена карточка не соответствующая фильтру.");
+                    assertMCS.equalsTrue(fullMarcetPlaseDeclaration.getAttribute(property) <= Integer.parseInt(value), "была выведена карточка не соответствующая фильтру.");
                 else
                     switch (property) {
                         case "Доставка": {
