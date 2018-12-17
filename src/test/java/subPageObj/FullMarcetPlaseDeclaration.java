@@ -109,11 +109,12 @@ public class FullMarcetPlaseDeclaration {
                         break;
                     }
                     case "Условия оплаты": {
+                        if (textViewElements.size() > 1) {
 
-                        this.firstTermsOfPayment = textViewElements.get(1).getText();
-                        this.secondTermsOfPayment = textViewElements.get(3).getText();
-                        this.secondTermsOfPayment += " " + textViewElements.get(4).getText();
-
+                            this.firstTermsOfPayment = textViewElements.get(1).getText();
+                            this.secondTermsOfPayment = textViewElements.get(3).getText();
+                            this.secondTermsOfPayment += " " + textViewElements.get(4).getText();
+                        }
 
                         break;
                     }
