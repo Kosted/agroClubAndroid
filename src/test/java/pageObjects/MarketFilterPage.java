@@ -69,6 +69,10 @@ public class MarketFilterPage extends MainAgroPage {
         }
     }
 
+    public Integer getDeclarationListSize(){
+        return declarationWebList.findElements(By.className("android.view.ViewGroup")).size();
+    }
+
 
     public void clickOnBackButton() {
         web_a.waitToBeClickableAndClick(backButton);
