@@ -20,7 +20,7 @@ public class DitailFilterTest extends SuperTest {
 
         return Arrays.asList(new Object[][]{
 
-                {"Пшеница 5 класс", "Протеин(белок)", "11", "less"},
+                {"Пшеница 5 класс", "Протеин", "11", "less"},
                 {"Пшеница 5 класс", "НДС", "Есть", null},
                 {"Рожь", "Влажность", "12", "more"}
         });
@@ -47,6 +47,7 @@ public class DitailFilterTest extends SuperTest {
             //registration(null, null, null);
             autorization("9054733762", 1);
 
+        priceUpdatePage.clickOnConfirmButton();
         // loginPage.assertion();
 
         //loginPage.chousePurchaser();

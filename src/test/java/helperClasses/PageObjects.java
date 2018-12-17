@@ -124,5 +124,7 @@ public class PageObjects {
 
         smsCodeAcceptPage.assertion();
         smsCodeAcceptPage.insertCorrectSmsCode();
+
+       // priceUpdatePage.clickOnConfirmButton();
     }
 }
