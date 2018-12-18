@@ -54,10 +54,10 @@ public class NewsPage extends MainAgroPage {
                     null);
 
             elements.get(position).click();
-            newsCard.setDetailDate(newsWebElem.findElement(By.id("ru.agroclub:id/tvDate")).getText());
-            newsCard.setDetailDate(newsWebElem.findElement(By.id("ru.agroclub:id/tvTitle")).getText());
-            newsCard.setText(newsWebElem.findElement(By.id("ru.agroclub:id/tvText")).getText());
-            newsCard.setSource(newsWebElem.findElement(By.id("ru.agroclub:id/Source")).getText());
+            newsCard.setDetailDate(driver.findElement(By.id("ru.agroclub:id/tvDate")).getText());
+            newsCard.setDetailTitle(driver.findElement(By.id("ru.agroclub:id/tvTitle")).getText());
+            newsCard.setText(driver.findElement(By.id("ru.agroclub:id/tvText")).getText());
+            newsCard.setSource(driver.findElement(By.id("ru.agroclub:id/Source")).getText());
             return newsCard;
         }
         return null;
