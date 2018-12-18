@@ -17,10 +17,10 @@ public class NewsTest extends SuperTest {
             autorization("9054733762", 1);
 
             priceUpdatePage.clickOnConfirmButton();
-            marcetplacePage.clickOnMenuButton();
 
         }
 
+        marcetplacePage.clickOnMenuButton();
         menuPage.clickOnNewsButton();
 
         NewsCard newsCard0 = newsPage.chouseNews(0);
@@ -29,6 +29,7 @@ public class NewsTest extends SuperTest {
         newsPage.clickOnBackButton();
 
         NewsCard newsCard2 = newsPage.chouseNews(2);
+        newsPage.clickOnBackButton();
         newsPage.clickOnBackButton();
 
 assertMCS.equalsTrue(newsPage.dateCompare(newsCard0.getDate(),newsCard1.getDate()),"первая и вторая новость расположены не в хронологическом порядке");
@@ -53,6 +54,9 @@ assertMCS.equalsTrue(newsPage.dateCompare(newsCard1.getDate(),newsCard2.getDate(
         menuPage.clickOnNewsButton();
 
         NewsCard newsCard0 = newsPage.chouseNews(0);
+
+        newsPage.clickOnBackButton();
+        newsPage.clickOnBackButton();
 
 
 assertMCS.equalsTrue(newsCard0.getDate().equals(newsCard0.getDetailDate()),"дата новости в краткой и детальной карточке не совпадает");

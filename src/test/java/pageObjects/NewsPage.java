@@ -27,7 +27,7 @@ public class NewsPage extends MainAgroPage {
 
     public NewsPage(WebActions webActions) {
         super(webActions);
-        swipedeclarationsDown = new Swipe(web_a, 50, 73, 50, 45, 1000);
+        swipedeclarationsDown = new Swipe(web_a, 50, 73, 50, 45, 200);
     }
 
 
@@ -57,7 +57,11 @@ public class NewsPage extends MainAgroPage {
             newsCard.setDetailDate(driver.findElement(By.id("ru.agroclub:id/tvDate")).getText());
             newsCard.setDetailTitle(driver.findElement(By.id("ru.agroclub:id/tvTitle")).getText());
             newsCard.setText(driver.findElement(By.id("ru.agroclub:id/tvText")).getText());
-            newsCard.setSource(driver.findElement(By.id("ru.agroclub:id/Source")).getText());
+
+            web_a.swipeAction(swipedeclarationsDown);
+            web_a.swipeAction(swipedeclarationsDown);
+
+            newsCard.setSource(driver.findElement(By.id("ru.agroclub:id/tvSource")).getText());
             return newsCard;
         }
         return null;
