@@ -29,12 +29,6 @@ public class ProfilePage extends SuperPage {
     @FindBy(id = "ru.agroclub:id/btnSave")
     private WebElement saveButton;
 
-    String organizationName;
-    String inn;
-    String mainAdress;
-    String nds;
-
-
     public ProfilePage(WebActions webActions) {
         super(webActions);
     }
@@ -88,47 +82,6 @@ public class ProfilePage extends SuperPage {
 
     public void clickOnOrganizationButton() {
         web_a.waitToBeClickableAndClick(organizationInfoButton);
-        fullOrganizationInfo();
-    }
-
-    public void fullOrganizationInfo() {
-
-        WebElement organizationName = web_a.isPresent(null, By.id("ru.agroclub:id/tvOrganizationName"), 20);
-        if (organizationName != null) {
-            this.organizationName = organizationName.getText();
-        }
-
-        WebElement inn = web_a.isPresent(null, By.id("ru.agroclub:id/tvInn"), 5);
-        if (inn != null) {
-            this.inn = inn.getText();
-        }
-
-        WebElement nds = web_a.isPresent(null, By.id("ru.agroclub:id/tvVat"), 5);
-        if (nds != null) {
-            this.nds = nds.getText();
-        }
-
-        WebElement mainAdress = web_a.isPresent(null, By.id("ru.agroclub:id/tvAddress"), 5);
-        if (mainAdress != null) {
-            this.mainAdress = mainAdress.getText();
-        }
-
-    }
-
-    public String getOrganizationName() {
-        return organizationName;
-    }
-
-    public String getInn() {
-        return inn;
-    }
-
-    public String getMainAdress() {
-        return mainAdress;
-    }
-
-    public String getNds() {
-        return nds;
     }
 
     public void assertion() {

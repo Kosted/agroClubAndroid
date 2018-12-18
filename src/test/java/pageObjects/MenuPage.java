@@ -76,6 +76,7 @@ public class MenuPage extends MainAgroPage {
 
     public void clickOnNewsButton() {
         web_a.swipeAction(swipeDown);
+        web_a.swipeAction(swipeDown);
         web_a.waitToBeClickableAndClick(news);
     }
 

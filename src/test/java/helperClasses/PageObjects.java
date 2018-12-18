@@ -27,6 +27,7 @@ public class PageObjects {
     protected static MarketFilterPage marketFilterPage;
     protected static MarketChousFilterPage marketChousFilterPage;
     protected static NewsPage newsPage;
+    protected static OrganizationPage organizationPage;
 
 
     private WebActions web_a;
@@ -50,6 +51,7 @@ public class PageObjects {
         marketFilterPage = new MarketFilterPage(web_a);
         marketChousFilterPage = new MarketChousFilterPage(web_a);
         newsPage = new NewsPage(web_a);
+        organizationPage = new OrganizationPage(web_a);
 
     }
 
