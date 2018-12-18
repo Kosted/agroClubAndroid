@@ -47,17 +47,17 @@ public class NewsPage extends MainAgroPage {
             WebElement newsWebElem = elements.get(position);
 
             NewsCard newsCard = new NewsCard(
-                    newsWebElem.findElement(By.id("ru.agroclub:id/tvDate")),
-                    newsWebElem.findElement(By.id("ru.agroclub:id/tvTitle")),
-                    newsWebElem.findElement(By.id("ru.agroclub:id/tvDescription")),
+                    newsWebElem.findElement(By.id("ru.agroclub:id/tvDate")).getText(),
+                    newsWebElem.findElement(By.id("ru.agroclub:id/tvTitle")).getText(),
+                    newsWebElem.findElement(By.id("ru.agroclub:id/tvDescription")).getText(),
                     null,
                     null);
 
             elements.get(position).click();
-            newsCard.setDetailDate(newsWebElem.findElement(By.id("ru.agroclub:id/tvDate")));
-            newsCard.setDetailDate(newsWebElem.findElement(By.id("ru.agroclub:id/tvTitle")));
-            newsCard.setText(newsWebElem.findElement(By.id("ru.agroclub:id/tvText")));
-            newsCard.setSource(newsWebElem.findElement(By.id("ru.agroclub:id/Source")));
+            newsCard.setDetailDate(newsWebElem.findElement(By.id("ru.agroclub:id/tvDate")).getText());
+            newsCard.setDetailDate(newsWebElem.findElement(By.id("ru.agroclub:id/tvTitle")).getText());
+            newsCard.setText(newsWebElem.findElement(By.id("ru.agroclub:id/tvText")).getText());
+            newsCard.setSource(newsWebElem.findElement(By.id("ru.agroclub:id/Source")).getText());
             return newsCard;
         }
         return null;
