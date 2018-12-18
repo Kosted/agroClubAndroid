@@ -50,25 +50,8 @@ public class DitailFilterTest extends SuperTest {
 
             priceUpdatePage.clickOnConfirmButton();
         }
-        // loginPage.assertion();
-
-        //loginPage.chousePurchaser();
-
-        // loginPage.insertPhoneNumber("9054733762");
-
-//        loginPage.clickOnLoginButton();
-//
-//        smsCodeAcceptPage.assertion();
-//        smsCodeAcceptPage.insertCorrectSmsCode();
-
-//        priceUpdatePage.assertion();
-//        priceUpdatePage.clickOnConfirmButton();
-
 
         marcetplacePage.chouseCulturefilter(culture);
-
-        //ShortMarcetPlaseDeclaration firstShortMarcetPlaseDeclaration = marketFilterPage.getShortMarcetPlaseDeclaration(0);
-
 
         marketFilterPage.clickOnFilterButton();
 
@@ -125,79 +108,8 @@ public class DitailFilterTest extends SuperTest {
         }
         marketFilterPage.clickOnBackButton();
 
-        //ShortMarcetPlaseDeclaration secondShortMarcetPlaseDeclaration = marketFilterPage.getShortMarcetPlaseDeclaration(0);
-
-
-//        if (firstShortMarcetPlaseDeclaration.equals(secondShortMarcetPlaseDeclaration))
-//            assertMCS.equalsTrue(Integer.parseInt(firstShortMarcetPlaseDeclaration.getMainAttribute().replaceAll("[^0-9]+", "")) <= 11, "была оставлена карточка не соответствующая фильтру.");
-//        else
-//            assertMCS.equalsTrue(Integer.parseInt(secondShortMarcetPlaseDeclaration.getMainAttribute().replaceAll("[^0-9]+", "")) <= 11, "была выведена карточка не соответствующая фильтру.");
-//
-
     }
 
-    @Test
-    public void defaultFilter() {
-        welcomePage.skipWelcomeTour();
-        if (loginPage.currentPage()) {
-            //registration(null, null, null);
-            autorization("9054733762", 1);
 
-            priceUpdatePage.clickOnConfirmButton();
-        }
-        // loginPage.assertion();
-
-        //loginPage.chousePurchaser();
-
-        // loginPage.insertPhoneNumber("9054733762");
-
-//        loginPage.clickOnLoginButton();
-//
-//        smsCodeAcceptPage.assertion();
-//        smsCodeAcceptPage.insertCorrectSmsCode();
-
-//        priceUpdatePage.assertion();
-//        priceUpdatePage.clickOnConfirmButton();
-
-
-        marcetplacePage.chouseCulturefilter(culture);
-
-        ShortMarcetPlaseDeclaration lastVisableShortMarcetPlaseDeclaration = marketFilterPage.getShortMarcetPlaseDeclaration(2);
-
-
-        marketFilterPage.clickOnFilterButton();
-
-        //marketChousFilterPage.clickOnDefaultFilterButton();
-
-        marketChousFilterPage.setFilter("Протеин", "55", "more");
-        marketChousFilterPage.setFilter("НДС", "Есть", null);
-        marketChousFilterPage.clickOnConfirmButton();
-
-        if (marketFilterPage.getDeclarationListSize() == 3)
-            Assert.assertFalse("фильтры не работают, тест не возможен",lastVisableShortMarcetPlaseDeclaration.equals(marketFilterPage.getShortMarcetPlaseDeclaration(2)));
-
-        marketFilterPage.clickOnFilterButton();
-        marketChousFilterPage.clickOnDefaultFilterButton();
-        marketChousFilterPage.clickOnConfirmButton();
-
-        assertMCS.equalsTrue(lastVisableShortMarcetPlaseDeclaration.equals(marketFilterPage.getShortMarcetPlaseDeclaration(2)),"выдача фильтра не вернулась к первоночальному состоянию после его сброса");
-
-        //FullMarcetPlaseDeclaration[] filterResult = new FullMarcetPlaseDeclaration[3];
-
-        //assertMCS.setStandartErrorMessege(" " + culture + ", " + property + ", " + value + ", " + sign + " ");
-
-
-        marketFilterPage.clickOnBackButton();
-
-        //ShortMarcetPlaseDeclaration secondShortMarcetPlaseDeclaration = marketFilterPage.getShortMarcetPlaseDeclaration(0);
-
-
-//        if (firstShortMarcetPlaseDeclaration.equals(secondShortMarcetPlaseDeclaration))
-//            assertMCS.equalsTrue(Integer.parseInt(firstShortMarcetPlaseDeclaration.getMainAttribute().replaceAll("[^0-9]+", "")) <= 11, "была оставлена карточка не соответствующая фильтру.");
-//        else
-//            assertMCS.equalsTrue(Integer.parseInt(secondShortMarcetPlaseDeclaration.getMainAttribute().replaceAll("[^0-9]+", "")) <= 11, "была выведена карточка не соответствующая фильтру.");
-//
-
-    }
 }
 

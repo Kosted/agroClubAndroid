@@ -26,6 +26,7 @@ public class PageObjects {
     protected static ProfilePage profilePage;
     protected static MarketFilterPage marketFilterPage;
     protected static MarketChousFilterPage marketChousFilterPage;
+    protected static NewsPage newsPage;
 
 
     private WebActions web_a;
@@ -48,10 +49,11 @@ public class PageObjects {
         myAddressPage = new MyAddressPage(web_a);
         marketFilterPage = new MarketFilterPage(web_a);
         marketChousFilterPage = new MarketChousFilterPage(web_a);
+        newsPage = new NewsPage(web_a);
 
     }
 
-    public String registration(String userName,String email ,String phoneNumber) {
+    public String registration(String userName, String email, String phoneNumber) {
 
         welcomePage.skipWelcomeTour();
 
@@ -125,6 +127,6 @@ public class PageObjects {
         smsCodeAcceptPage.assertion();
         smsCodeAcceptPage.insertCorrectSmsCode();
 
-       // priceUpdatePage.clickOnConfirmButton();
+        // priceUpdatePage.clickOnConfirmButton();
     }
 }

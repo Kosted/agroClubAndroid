@@ -1,5 +1,6 @@
 package pageObjects;
 
+import helperClasses.Swipe;
 import helperClasses.WebActions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,9 +32,14 @@ public class MenuPage extends MainAgroPage {
     @FindBy(id = "ru.agroclub:id/tvUserInfo")
     private WebElement userInfoLabel;
 
+    Swipe swipeDown;
+    Swipe swipeUp;
 
     public MenuPage(WebActions webActions) {
         super(webActions);
+        swipeDown = new Swipe(web_a, 50, 75, 50, 10, 200);
+        swipeUp = new Swipe(web_a, 50, 10, 50, 75, 200);
+
     }
 
 
@@ -66,6 +72,11 @@ public class MenuPage extends MainAgroPage {
 
     public void clickOnDealsButton() {
         web_a.waitToBeClickableAndClick(deals);
+    }
+
+    public void clickOnNewsButton() {
+        web_a.swipeAction(swipeDown);
+        web_a.waitToBeClickableAndClick(news);
     }
 
     public String getUserInfo() {
