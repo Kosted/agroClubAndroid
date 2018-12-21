@@ -34,8 +34,8 @@ public class AddAddressPage extends SuperPage {
 
     }
 
-    public void assertion() {
-        Assert.assertTrue("отсутствует заголовок страницы \"Укажите адрес приемки\"", currentPage(30));
+    public void assertion(String role) {
+        Assert.assertTrue("отсутствует заголовок страницы \"Укажите адрес приемки\"", currentPage(30, role));
         Assert.assertTrue("отсутствует поле ввода названия адресса", addressNameField != null);
         Assert.assertTrue("отсутствует кнопка далее", nextButton != null);
     }
@@ -53,9 +53,12 @@ public class AddAddressPage extends SuperPage {
     }
 
 
-    public Boolean currentPage(int waitTime) {
+    public Boolean currentPage(int waitTime, String role) {
         if (web_a.isPresent(toolBarTitle, waitTime) != null)
+            if (role.equals("Закупщик"))
             return toolBarTitle.getText().equals("Укажите адрес приемки");
+            else
+                return toolBarTitle.getText().equals("Укажите адрес отгрузки");
         else return false;
     }
 

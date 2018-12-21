@@ -10,20 +10,20 @@ import java.util.Collection;
 import java.util.Random;
 
 @RunWith(value = Parameterized.class)
-public class registrationTest extends SuperTest {
+public class RegistrationTest extends SuperTest {
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
 
-                {"Закупщик"},
-                {"Фермер"}
+                {"Фермер"},
+                {"Закупщик"}
         });
     }
 
     private String role;
 
-    public registrationTest(String role) {
+    public RegistrationTest(String role) {
         this.role = role;
     }
 
@@ -124,11 +124,11 @@ public class registrationTest extends SuperTest {
 
         addAddressPage.clickOnDenyPermissionButton();
 
-        addAddressPage.assertion();
+        addAddressPage.assertion(role);
         addAddressPage.insertOnAddressNameField("тестовый адресс");
         addAddressPage.clickOnNextButton();
 
-        addAddressPage.assertion();
+        addAddressPage.assertion(role);
         addAddressPage.clickOnManualEditAddresButton();
 
         addresManualAddPage.assertion();
@@ -209,7 +209,7 @@ public class registrationTest extends SuperTest {
 
         addAddressPage.clickOnAllowPermissionButton();
 
-        addAddressPage.assertion();
+        addAddressPage.assertion(role);
         addAddressPage.insertOnAddressNameField("12№тестовый адресс145/");
         addAddressPage.clickOnNextButton();
 
