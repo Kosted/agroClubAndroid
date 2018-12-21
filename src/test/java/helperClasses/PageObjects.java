@@ -55,7 +55,7 @@ public class PageObjects {
 
     }
 
-    public String registration(String userName, String email, String phoneNumber) {
+    public String registration(String userName, String email, String phoneNumber, String role) {
 
         welcomePage.skipWelcomeTour();
 
@@ -69,7 +69,10 @@ public class PageObjects {
 
         loginPage.assertion();
 
-        loginPage.chousePurchaser();
+        if (role.equals("Закупщик"))
+            loginPage.chousePurchaser();
+        else if (role.equals("Фермер"))
+            loginPage.chouseFarmer();
 
         String registrationPhoneNumber = phoneNumber;
 
@@ -107,7 +110,7 @@ public class PageObjects {
 
         addAddressPage.clickOnAllowPermissionButton();
 
-        addAddressPage.assertion();
+        addAddressPage.assertion(role);
         addAddressPage.insertOnAddressNameField("тестовый адрес");
         addAddressPage.clickOnNextButton();
 
@@ -117,12 +120,13 @@ public class PageObjects {
         return registrationPhoneNumber;
     }
 
-    public void autorization(String phoneNumber, int role) {
+    public void autorization(String phoneNumber, String role) {
         loginPage.insertPhoneNumber(phoneNumber);
-        if (role == 0)
-            loginPage.chouseFarmer();
-        else
+        if (role.equals("Закупщик"))
             loginPage.chousePurchaser();
+        else
+            loginPage.chouseFarmer();
+
 
         loginPage.clickOnLoginButton();
 
