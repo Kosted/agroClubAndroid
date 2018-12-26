@@ -27,7 +27,7 @@ public class ProfileTest extends SuperTest {
 
     private Rols role;
 
-    public ProfileTest() {
+    public ProfileTest(Rols role) {
         //super(web_a);
         this.role = role;
     }

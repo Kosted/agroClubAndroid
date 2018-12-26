@@ -15,8 +15,8 @@ import static superClasses.SuperTest.Rols.PURCHASER;
 public class MenuAddressTest extends SuperTest {
 
 
-    public MenuAddressTest() {
-        //super(web_a);
+    public MenuAddressTest(Rols role) {
+        this.role = role;
     }
 
     @Parameterized.Parameters
