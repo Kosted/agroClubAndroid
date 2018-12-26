@@ -138,7 +138,7 @@ public class WebActions {
 
         capabilities.setCapability("appPackage", "ru.agroclub");
         capabilities.setCapability("appActivity", "ru.agroclub.app.splash.SplashView");
-        capabilities.setCapability("noReset", true);
+        capabilities.setCapability("noReset", false);
         capabilities.setCapability("unicodeKeyboard", true);
         capabilities.setCapability("newCommandTimeout", 300);
         capabilities.setCapability("autoGrantPermissions",  true);

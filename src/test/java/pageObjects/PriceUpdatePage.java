@@ -33,7 +33,7 @@ public class PriceUpdatePage extends SuperPage {
     }
 
     public void clickOnConfirmButton() {
-        web_a.waitToBeClickable(confirmButton).click();
+        web_a.waitToBeClickableAndClick(confirmButton);
 
     }
 

@@ -22,7 +22,7 @@ public class MarketChousFilterPage extends MainAgroPage {
     @FindBy(id = "ru.agroclub:id/toolbarRightBtn")
     private WebElement closeFiltersButton;
 
-    @FindBy(id = "ru.agroclub:id/btn")
+    @FindBy(id = "ru.agroclub:id/btnBottom")
     private WebElement confirmButton;
 
     private Swipe swipedFiltersDown;
@@ -95,7 +95,7 @@ public class MarketChousFilterPage extends MainAgroPage {
         String currentFieldsName = "";
         int swipeCount = 5;
 
-        while (!currentFieldsName.contains(fieldName)) {
+        while (!currentFieldsName.contains(fieldName)|| swipeCount>0) {
 
             fieldsList = filtersWebList.findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup"));
 

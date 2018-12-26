@@ -43,7 +43,7 @@ public class MarcetplacePage extends MainAgroPage {
 
 
     public Boolean currentPage() {
-        return web_a.isPresent(titleLabel).getText().equals("Рынок");
+        return web_a.isPresent(titleLabel).getText().contains("Рынок");
     }
 
     public FullMarcetPlaseDeclaration chouseDeclaration(int position, Boolean doOffer) {
@@ -104,10 +104,10 @@ public class MarcetplacePage extends MainAgroPage {
     }
 
     public List<WebElement> getVisableCulture() {
-        if (currentPage())
+//        if (currentPage())
             return cultureFilterWebList.findElements(By.className("android.widget.TextView"));
-        else
-            return null;
+//        else
+//            return null;
     }
 
     public void swipeСulture(String direction) {
@@ -138,6 +138,31 @@ public class MarcetplacePage extends MainAgroPage {
             return present.getText();
         else return null;
     }
+
+    public void chousFarmerMarketplase(MarketSections marketSections){
+String locator ="ru.agroclub:id/cv";
+switch (marketSections){
+    case HARVEST:
+        locator+="Harvest";
+        break;
+    case SEEDS:
+        locator+="Seeds";
+        break;
+    case SZR:
+        locator+="SZR";
+        break;
+    case FERTILIZER:
+        locator+="Fertilizer";
+        break;
+    case COUNTERFEIT:
+        locator += "Counterfeit";
+        break;
+}
+web_a.isPresent(null, By.id(locator),5).click();
+    }
+
+
+    enum MarketSections{HARVEST,SEEDS,SZR,FERTILIZER,COUNTERFEIT}
 
 }
 

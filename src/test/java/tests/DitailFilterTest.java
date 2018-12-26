@@ -59,6 +59,8 @@ public class DitailFilterTest extends SuperTest {
             priceUpdatePage.clickOnConfirmButton();
         }
 
+        if (role == Rols.FARMER)
+
         marcetplacePage.chouseCulturefilter(culture);
 
         marketFilterPage.clickOnFilterButton();
