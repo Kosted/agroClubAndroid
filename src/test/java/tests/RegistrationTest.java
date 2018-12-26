@@ -128,19 +128,19 @@ public class RegistrationTest extends SuperTest {
         chouseOrganizationPage.insertSubdivision("1" + new Random().nextInt(9999999));
         chouseOrganizationPage.clickOnSaveButton();
 
-        addAddressPage.clickOnDenyPermissionButton();
+       // addAddressPage.clickOnDenyPermissionButton();
 
         addAddressPage.assertion(role);
         addAddressPage.insertOnAddressNameField("тестовый адресс");
         addAddressPage.clickOnNextButton();
 
-        addAddressPage.assertion(role);
-        addAddressPage.clickOnManualEditAddresButton();
+        //addAddressPage.assertion(role);
+       // addAddressPage.clickOnManualEditAddresButton();
 
-        addresManualAddPage.assertion();
-        addresManualAddPage.clickOnBackButton();
-
-        addAddressPage.clickOnAllowPermissionButton();
+//        addresManualAddPage.assertion();
+//        addresManualAddPage.clickOnBackButton();
+//
+//        addAddressPage.clickOnAllowPermissionButton();
         addAddressPage.clickOnNextButton();
 
         logisticPage.assertion();

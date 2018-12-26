@@ -20,8 +20,8 @@ public class NewsTest extends SuperTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
 
-                {FARMER},
-                {PURCHASER}
+                {FARMER, "9083333333"},
+                {PURCHASER, "9054733762"}
         });
     }
 
