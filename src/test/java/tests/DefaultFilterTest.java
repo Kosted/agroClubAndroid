@@ -3,11 +3,10 @@ package tests;
 import org.junit.Assert;
 import org.junit.Test;
 
+import pageObjects.MarketChousFilterPage;
 import subPageObj.ShortMarcetPlaseDeclaration;
 import superClasses.SuperTest;
 
-
-import static pageObjects.MarketChousFilterPage.Sign.MORE;
 
 public class DefaultFilterTest extends SuperTest {
 
@@ -32,7 +31,7 @@ public class DefaultFilterTest extends SuperTest {
         marketFilterPage.clickOnFilterButton();
 
 
-        marketChousFilterPage.setFilter("Протеин", "55", MORE);
+        marketChousFilterPage.setFilter("Протеин", "55", MarketChousFilterPage.Sign.MORE);
         marketChousFilterPage.setFilter("НДС", "Есть", null);
         marketChousFilterPage.clickOnConfirmButton();
 

@@ -9,6 +9,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Random;
 
+import static superClasses.SuperTest.Rols.FARMER;
+import static superClasses.SuperTest.Rols.PURCHASER;
+
 @RunWith(value = Parameterized.class)
 public class ProfileTest extends SuperTest {
 
@@ -16,8 +19,8 @@ public class ProfileTest extends SuperTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
 
-                {"Фермер"},
-                {"Закупщик"}
+                {FARMER},
+                {PURCHASER}
         });
     }
 

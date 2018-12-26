@@ -14,6 +14,9 @@ import superClasses.SuperTest;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static pageObjects.MarketChousFilterPage.Sign.LESS;
+import static pageObjects.MarketChousFilterPage.Sign.MORE;
+
 @RunWith(value = Parameterized.class)
 public class DitailFilterTest extends SuperTest {
 
@@ -22,9 +25,9 @@ public class DitailFilterTest extends SuperTest {
 
         return Arrays.asList(new Object[][]{
 
-                {"Пшеница 5 класс", "Протеин", "11", "less", Rols.PURCHASER, "9054733762"},
-                {"Пшеница 5 класс", "НДС", "Есть", null},
-                {"Рожь", "Влажность", "12", "more"}
+                {"Пшеница 5 класс", "Протеин", "11", LESS, Rols.PURCHASER, "9054733762"},
+                {"Пшеница 5 класс", "НДС", "Есть", null, Rols.FARMER, "9083333333"},
+                {"Рожь", "Влажность", "12", MORE, Rols.PURCHASER, "9054733762"}
         });
 
     }
@@ -36,7 +39,7 @@ public class DitailFilterTest extends SuperTest {
     private Rols role;
     private String phoneNumber;
 
-    public DitailFilterTest(String culture, String property, String value, Sign sign,Rols role,String phoneNumber) {
+    public DitailFilterTest(String culture, String property, String value, Sign sign, Rols role, String phoneNumber) {
         this.culture = culture;
         this.property = property;
         this.value = value;

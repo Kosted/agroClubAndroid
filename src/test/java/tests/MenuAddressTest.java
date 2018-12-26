@@ -8,6 +8,9 @@ import superClasses.SuperTest;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static superClasses.SuperTest.Rols.FARMER;
+import static superClasses.SuperTest.Rols.PURCHASER;
+
 @RunWith(value = Parameterized.class)
 public class MenuAddressTest extends SuperTest {
 
@@ -20,8 +23,8 @@ public class MenuAddressTest extends SuperTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
 
-                {"Фермер"},
-                {"Закупщик"}
+                {FARMER},
+                {PURCHASER}
         });
     }
 
