@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+import pageObjects.MarcetplacePage;
 import pageObjects.MarketChousFilterPage.*;
 import subPageObj.FullMarcetPlaseDeclaration;
 import subPageObj.ShortMarcetPlaseDeclaration;
@@ -60,6 +61,7 @@ public class DitailFilterTest extends SuperTest {
         }
 
         if (role == Rols.FARMER)
+            marcetplacePage.chousFarmerMarketplase(MarcetplacePage.MarketSections.HARVEST);
 
         marcetplacePage.chouseCulturefilter(culture);
 

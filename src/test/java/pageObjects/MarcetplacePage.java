@@ -162,7 +162,7 @@ web_a.isPresent(null, By.id(locator),5).click();
     }
 
 
-    enum MarketSections{HARVEST,SEEDS,SZR,FERTILIZER,COUNTERFEIT}
+    public enum MarketSections{HARVEST,SEEDS,SZR,FERTILIZER,COUNTERFEIT}
 
 }
 

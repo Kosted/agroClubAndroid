@@ -3,6 +3,7 @@ package tests;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import pageObjects.MarcetplacePage;
 import superClasses.SuperTest;
 
 import java.util.Arrays;
@@ -80,6 +81,10 @@ public class MenuAddressTest extends SuperTest {
     public void marketplaseAddres() {
 
         registration(null, null, null,role);
+
+        if (role == Rols.FARMER)
+            marcetplacePage.chousFarmerMarketplase(MarcetplacePage.MarketSections.HARVEST);
+
         assertMCS.equalsTrue(marcetplacePage.getMarketAddres()==null, "на рынке изначально был задан адрес приемки");
 
         marcetplacePage.clickOnchouseAddresButton();
