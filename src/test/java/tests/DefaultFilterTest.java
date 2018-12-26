@@ -2,15 +2,12 @@ package tests;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
-import subPageObj.FullMarcetPlaseDeclaration;
+
 import subPageObj.ShortMarcetPlaseDeclaration;
 import superClasses.SuperTest;
 
-import java.util.Arrays;
-import java.util.Collection;
+
+import static pageObjects.MarketChousFilterPage.Sign.MORE;
 
 public class DefaultFilterTest extends SuperTest {
 
@@ -22,7 +19,7 @@ public class DefaultFilterTest extends SuperTest {
         welcomePage.skipWelcomeTour();
         if (loginPage.currentPage()) {
             //registration(null, null, null);
-            autorization("9054733762", 1);
+            autorization("9054733762", Rols.PURCHASER);
 
             priceUpdatePage.clickOnConfirmButton();
         }
@@ -35,7 +32,7 @@ public class DefaultFilterTest extends SuperTest {
         marketFilterPage.clickOnFilterButton();
 
 
-        marketChousFilterPage.setFilter("Протеин", "55", "more");
+        marketChousFilterPage.setFilter("Протеин", "55", MORE);
         marketChousFilterPage.setFilter("НДС", "Есть", null);
         marketChousFilterPage.clickOnConfirmButton();
 

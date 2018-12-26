@@ -20,7 +20,7 @@ public class MarketPlaseCulrtureFilterTest extends SuperTest {
     public void marketPlaseCulrtureFilterTest() {
         welcomePage.skipWelcomeTour();
 
-        autorization("9054733762", 1);
+        autorization("9054733762", Rols.PURCHASER);
         priceUpdatePage.clickOnConfirmButton();
 
         List<String> cultureAssertList = new ArrayList<>();

@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+import pageObjects.MarketChousFilterPage.*;
 import subPageObj.FullMarcetPlaseDeclaration;
 import subPageObj.ShortMarcetPlaseDeclaration;
 import superClasses.SuperTest;
@@ -21,7 +22,7 @@ public class DitailFilterTest extends SuperTest {
 
         return Arrays.asList(new Object[][]{
 
-                {"Пшеница 5 класс", "Протеин", "11", "less"},
+                {"Пшеница 5 класс", "Протеин", "11", "less", Rols.PURCHASER, "9054733762"},
                 {"Пшеница 5 класс", "НДС", "Есть", null},
                 {"Рожь", "Влажность", "12", "more"}
         });
@@ -31,13 +32,17 @@ public class DitailFilterTest extends SuperTest {
     private String culture;
     private String property;
     private String value;
-    private String sign;
+    private Sign sign;
+    private Rols role;
+    private String phoneNumber;
 
-    public DitailFilterTest(String culture, String property, String value, String sign) {
+    public DitailFilterTest(String culture, String property, String value, Sign sign,Rols role,String phoneNumber) {
         this.culture = culture;
         this.property = property;
         this.value = value;
         this.sign = sign;
+        this.role = role;
+        this.phoneNumber = phoneNumber;
     }
 
 
@@ -46,7 +51,7 @@ public class DitailFilterTest extends SuperTest {
         welcomePage.skipWelcomeTour();
         if (loginPage.currentPage()) {
             //registration(null, null, null);
-            autorization("9054733762", 1);
+            autorization(phoneNumber, role);
 
             priceUpdatePage.clickOnConfirmButton();
         }

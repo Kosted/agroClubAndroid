@@ -2,6 +2,7 @@ package helperClasses;
 
 import pageObjects.*;
 import subPageObj.CultureLib;
+import superClasses.SuperTest;
 
 import java.util.Random;
 
@@ -55,7 +56,7 @@ public class PageObjects {
 
     }
 
-    public String registration(String userName, String email, String phoneNumber, String role) {
+    public String registration(String userName, String email, String phoneNumber, SuperTest.Rols role) {
 
         welcomePage.skipWelcomeTour();
 
@@ -69,10 +70,13 @@ public class PageObjects {
 
         loginPage.assertion();
 
-        if (role.equals("Закупщик"))
-            loginPage.chousePurchaser();
-        else if (role.equals("Фермер"))
+        if (role == SuperTest.Rols.FARMER)
             loginPage.chouseFarmer();
+
+        else if (role == SuperTest.Rols.PURCHASER) {
+            loginPage.chousePurchaser();
+        }
+        //else  loginPage.chouseDistributor();
 
         String registrationPhoneNumber = phoneNumber;
 
@@ -120,12 +124,17 @@ public class PageObjects {
         return registrationPhoneNumber;
     }
 
-    public void autorization(String phoneNumber, String role) {
+    public void autorization(String phoneNumber, SuperTest.Rols role) {
+
         loginPage.insertPhoneNumber(phoneNumber);
-        if (role.equals("Закупщик"))
-            loginPage.chousePurchaser();
-        else
+
+        if (role == SuperTest.Rols.FARMER)
             loginPage.chouseFarmer();
+
+        else if (role == SuperTest.Rols.PURCHASER) {
+            loginPage.chousePurchaser();
+        }
+        //else  loginPage.chouseDistributor();
 
 
         loginPage.clickOnLoginButton();
@@ -135,4 +144,5 @@ public class PageObjects {
 
         // priceUpdatePage.clickOnConfirmButton();
     }
+
 }

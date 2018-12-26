@@ -9,6 +9,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Random;
 
+import static superClasses.SuperTest.Rols.FARMER;
+import static superClasses.SuperTest.Rols.PURCHASER;
+
 @RunWith(value = Parameterized.class)
 public class RegistrationTest extends SuperTest {
 
@@ -16,14 +19,14 @@ public class RegistrationTest extends SuperTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
 
-                {"Фермер"},
-                {"Закупщик"}
+                {FARMER},
+                {PURCHASER}
         });
     }
 
-    private String role;
+    private Rols role;
 
-    public RegistrationTest(String role) {
+    public RegistrationTest(Rols role) {
         this.role = role;
     }
 
@@ -34,10 +37,13 @@ public class RegistrationTest extends SuperTest {
 
         loginPage.assertion();
 
-        if (role.equals("Закупщик"))
-            loginPage.chousePurchaser();
-        else if (role.equals("Фермер"))
+        if (role == SuperTest.Rols.FARMER)
             loginPage.chouseFarmer();
+
+        else if (role == SuperTest.Rols.PURCHASER) {
+            loginPage.chousePurchaser();
+        }
+        //else  loginPage.chouseDistributor();
 
 //        loginPage.clickOnPersonalAccept();
 //        assertMCS.equalsFalse(userDataAnalisPage.isDocumentEmpty(), " пустое лиц соглашение");
@@ -155,10 +161,13 @@ public class RegistrationTest extends SuperTest {
 
         loginPage.insertPhoneNumber(registrationPhoneNumber);
 
-        if (role.equals("Закупщик"))
+        if (role == SuperTest.Rols.FARMER)
             loginPage.chouseFarmer();
-        else if (role.equals("Фермер"))
+
+        else if (role == SuperTest.Rols.PURCHASER) {
             loginPage.chousePurchaser();
+        }
+        //else  loginPage.chouseDistributor();
 
         loginPage.clickOnLoginButton();
 
@@ -179,10 +188,13 @@ public class RegistrationTest extends SuperTest {
 
         loginPage.assertion();
 
-        if (role.equals("Закупщик"))
-            loginPage.chousePurchaser();
-        else if (role.equals("Фермер"))
+        if (role == SuperTest.Rols.FARMER)
             loginPage.chouseFarmer();
+
+        else if (role == SuperTest.Rols.PURCHASER) {
+            loginPage.chousePurchaser();
+        }
+        //else  loginPage.chouseDistributor();
 
         String registrationPhoneNumber = "904" + new Random().nextInt(999999999);
 
@@ -228,7 +240,7 @@ public class RegistrationTest extends SuperTest {
 
         loginPage.assertion();
 
-        autorization(registrationPhoneNumber, 1);
+        autorization(registrationPhoneNumber, role);
 
         //временное решение пока не добавлена полноценная сраница рынка
         assertMCS.equalsTrue(marcetplacePage.currentPage(), "не был осуществлен переход на страницу рынка");

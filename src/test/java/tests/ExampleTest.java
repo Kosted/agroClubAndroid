@@ -3,6 +3,7 @@ package tests;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import pageObjects.MarketChousFilterPage;
 import subPageObj.CultureLib;
 import subPageObj.FullMarcetPlaseDeclaration;
 import subPageObj.ShortMarcetPlaseDeclaration;
@@ -21,7 +22,7 @@ public class ExampleTest extends SuperTest {
     @Test
     public void exampleTest() {
         welcomePage.skipWelcomeTour();
-        autorization("9054733762", 1);
+        autorization("9054733762", Rols.PURCHASER);
         priceUpdatePage.clickOnConfirmButton();
 
        // loginPage.assertion();
@@ -43,12 +44,12 @@ public class ExampleTest extends SuperTest {
 
         marketFilterPage.clickOnFilterButton();
 
-        marketChousFilterPage.setFilter("Протеин(белок), %","11" ,"less");
+        marketChousFilterPage.setFilter("Протеин(белок), %","11" , MarketChousFilterPage.Sign.LESS);
         marketChousFilterPage.clickOnConfirmButton();
 
  marketFilterPage.clickOnFilterButton();
 
-        marketChousFilterPage.setFilter("Число падения, с","12" ,"more");
+        marketChousFilterPage.setFilter("Число падения, с","12" , MarketChousFilterPage.Sign.MORE);
         marketChousFilterPage.clickOnConfirmButton();
 
     //    ShortMarcetPlaseDeclaration shortMarcetPlaseDeclaration = marcetplacePage.getShortMarcetPlaseDeclaration(0);

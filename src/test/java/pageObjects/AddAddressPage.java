@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import superClasses.SuperPage;
+import superClasses.SuperTest;
 
 public class AddAddressPage extends SuperPage {
 
@@ -34,7 +35,7 @@ public class AddAddressPage extends SuperPage {
 
     }
 
-    public void assertion(String role) {
+    public void assertion(SuperTest.Rols role) {
         Assert.assertTrue("отсутствует заголовок страницы \"Укажите адрес приемки\"", currentPage(30, role));
         Assert.assertTrue("отсутствует поле ввода названия адресса", addressNameField != null);
         Assert.assertTrue("отсутствует кнопка далее", nextButton != null);
@@ -53,9 +54,9 @@ public class AddAddressPage extends SuperPage {
     }
 
 
-    public Boolean currentPage(int waitTime, String role) {
+    public Boolean currentPage(int waitTime, SuperTest.Rols role) {
         if (web_a.isPresent(toolBarTitle, waitTime) != null)
-            if (role.equals("Закупщик"))
+            if (role== SuperTest.Rols.PURCHASER)
             return toolBarTitle.getText().equals("Укажите адрес приемки");
             else
                 return toolBarTitle.getText().equals("Укажите адрес отгрузки");

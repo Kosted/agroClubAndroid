@@ -55,4 +55,7 @@ public abstract class SuperTest extends PageObjects {
         driver.quit();
 //         assertMCS.
     }
+
+    public  enum Rols{FARMER, PURCHASER, DISTRIBUTOR}
+
 }

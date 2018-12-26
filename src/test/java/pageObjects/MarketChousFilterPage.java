@@ -27,6 +27,8 @@ public class MarketChousFilterPage extends MainAgroPage {
 
     private Swipe swipedFiltersDown;
 
+    public enum Sign{MORE, LESS}
+
     public MarketChousFilterPage(WebActions webActions) {
         super(webActions);
         swipedFiltersDown = new Swipe(web_a, 50, 73, 50, 45, 600);
@@ -53,7 +55,7 @@ public class MarketChousFilterPage extends MainAgroPage {
         web_a.waitToBeClickableAndClick(defaultFiltersButton);
     }
 
-    public String setFilter(String property, String value, String sign) {
+    public String setFilter(String property, String value, Sign sign) {
         if (property == null) {
             return null;
         } else {
@@ -70,11 +72,11 @@ public class MarketChousFilterPage extends MainAgroPage {
             } else {
                 web_a.insertTextOnAndroidEditTextField(parentPropertyField, value);
                 switch (sign) {
-                    case "less": {
+                    case LESS: {
                         web_a.waitToBeClickableAndClick(parentPropertyField.findElement(By.id("ru.agroclub:id/tvLess")));
                         break;
                     }
-                    case "more": {
+                    case MORE: {
                         web_a.waitToBeClickableAndClick(parentPropertyField.findElement(By.id("ru.agroclub:id/tvMore")));
                         break;
                     }

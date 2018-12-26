@@ -1,9 +1,14 @@
 package tests;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import superClasses.SuperTest;
 
+import java.util.Arrays;
+import java.util.Collection;
 
+@RunWith(value = Parameterized.class)
 public class MenuAddressTest extends SuperTest {
 
 
@@ -11,10 +16,21 @@ public class MenuAddressTest extends SuperTest {
         //super(web_a);
     }
 
+    @Parameterized.Parameters
+    public static Collection<Object[]> data() {
+        return Arrays.asList(new Object[][]{
+
+                {"Фермер"},
+                {"Закупщик"}
+        });
+    }
+
+    private Rols role;
+
     @Test
     public void addres() {
 
-        String userPhoneNumber = registration(null, null, null);
+        String userPhoneNumber = registration(null, null, null, role);
 
         marcetplacePage.clickOnMenuButton();
         menuPage.clickOnAddressButton();
@@ -25,7 +41,7 @@ public class MenuAddressTest extends SuperTest {
 
         myAddressPage.clickOnAddAddresButton();
 
-        addAddressPage.assertion();
+        addAddressPage.assertion(role);
         //addAddressPage.clickOnAllowPermissionButton();
 
         String newAddres = "Добавленный адрес";
@@ -60,7 +76,7 @@ public class MenuAddressTest extends SuperTest {
     @Test
     public void marketplaseAddres() {
 
-        registration(null, null, null);
+        registration(null, null, null,role);
         assertMCS.equalsTrue(marcetplacePage.getMarketAddres()==null, "на рынке изначально был задан адрес приемки");
 
         marcetplacePage.clickOnchouseAddresButton();

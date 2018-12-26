@@ -1,16 +1,32 @@
 package tests;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import superClasses.SuperTest;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Random;
 
-
+@RunWith(value = Parameterized.class)
 public class ProfileTest extends SuperTest {
 
+    @Parameterized.Parameters
+    public static Collection<Object[]> data() {
+        return Arrays.asList(new Object[][]{
+
+                {"Фермер"},
+                {"Закупщик"}
+        });
+    }
+
+
+    private Rols role;
 
     public ProfileTest() {
         //super(web_a);
+        this.role = role;
     }
 
     @Test
@@ -19,7 +35,7 @@ public class ProfileTest extends SuperTest {
         String userName = "Пользователь Созданный Для";
         String userEmail = "email@asdf.ru";
 
-        String userPhoneNumber = registration(userName, userEmail, null);
+        String userPhoneNumber = registration(userName, userEmail, null, role);
 
         marcetplacePage.clickOnMenuButton();
         menuPage.clickOnProfileButton();
@@ -59,7 +75,7 @@ public class ProfileTest extends SuperTest {
 
         menuPage.clickOnLogautButton();
 
-        autorization(userPhoneNumber, 1);
+        autorization(userPhoneNumber, role);
 
         marcetplacePage.clickOnMenuButton();
 
