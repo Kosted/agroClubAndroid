@@ -1,5 +1,6 @@
 package tests;
 
+import helperClasses.Swipe;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +16,8 @@ import static superClasses.SuperTest.Rols.*;
 
 @RunWith(value = Parameterized.class)
 public class NewsTest extends SuperTest {
+
+    private final Swipe swipedeclarationsDown;
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
@@ -32,6 +35,8 @@ public class NewsTest extends SuperTest {
     public NewsTest(Rols role, String phoneNumber) {
         this.role = role;
         this.phoneNumber = phoneNumber;
+        swipedeclarationsDown = new Swipe(web_a, 50, 73, 50, 45, 1000);
+
     }
 
     @Test
@@ -50,10 +55,15 @@ public class NewsTest extends SuperTest {
 
         NewsCard newsCard0 = newsPage.chouseNews(0);
         newsPage.clickOnBackButton();
+
+        web_a.swipeAction(swipedeclarationsDown);
+
         NewsCard newsCard1 = newsPage.chouseNews(1);
         newsPage.clickOnBackButton();
 
+        web_a.swipeAction(swipedeclarationsDown);
         NewsCard newsCard2 = newsPage.chouseNews(2);
+
         newsPage.clickOnBackButton();
         newsPage.clickOnBackButton();
 
