@@ -120,6 +120,8 @@ public class DitailFilterTest extends SuperTest {
         }
         marketFilterPage.clickOnBackButton();
 
+        marcetplacePage.clickOnMenuButton();
+        menuPage.clickOnLogautButton();
     }
 
 
