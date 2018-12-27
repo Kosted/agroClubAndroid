@@ -104,13 +104,11 @@ public class MarcetplacePage extends MainAgroPage {
     }
 
     public List<WebElement> getVisableCulture() {
-        if (currentPage()) {
+
             List<WebElement> elements = cultureFilterWebList.findElements(By.className("android.widget.TextView"));
             while (elements.size()<1)
                 elements = cultureFilterWebList.findElements(By.className("android.widget.TextView"));
             return elements;
-        } else
-            return null;
     }
 
     public void swipeСulture(String direction) {
