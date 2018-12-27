@@ -79,9 +79,9 @@ public class MarcetplacePage extends MainAgroPage {
         List<WebElement> cultureList;
         String currentfilter = "";
 
-        swipeСulture("left");
-        swipeСulture("left");
-        swipeСulture("left");
+//        swipeСulture("left");
+//        swipeСulture("left");
+//        swipeСulture("left");
 
         while (!currentfilter.equals(cultureName)) {
 

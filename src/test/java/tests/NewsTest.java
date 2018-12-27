@@ -70,7 +70,7 @@ public class NewsTest extends SuperTest {
         welcomePage.skipWelcomeTour();
         if (loginPage.currentPage()) {
             //registration(null, null, null);
-            autorization("9054733762", role);
+            autorization(phoneNumber, role);
 
             priceUpdatePage.clickOnConfirmButton();
             marcetplacePage.clickOnMenuButton();

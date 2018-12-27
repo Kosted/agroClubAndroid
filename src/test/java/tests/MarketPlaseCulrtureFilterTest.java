@@ -22,6 +22,7 @@ public class MarketPlaseCulrtureFilterTest extends SuperTest {
 
         autorization("9054733762", Rols.PURCHASER);
         priceUpdatePage.clickOnConfirmButton();
+        marcetplacePage.currentPage();
         List<String> cultureAssertList = new ArrayList<>();
         while (cultureAssertList.size() < 26) {
             List<WebElement> visableCulture = marcetplacePage.getVisableCulture();

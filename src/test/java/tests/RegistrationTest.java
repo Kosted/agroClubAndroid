@@ -157,19 +157,6 @@ public class RegistrationTest extends SuperTest {
 
         menuPage.clickOnLogautButton();
 
-        loginPage.assertion();
-
-        loginPage.insertPhoneNumber(registrationPhoneNumber);
-
-        if (role == SuperTest.Rols.FARMER)
-            loginPage.chouseFarmer();
-
-        else if (role == SuperTest.Rols.PURCHASER) {
-            loginPage.chousePurchaser();
-        }
-        //else  loginPage.chouseDistributor();
-
-        loginPage.clickOnLoginButton();
 
     }
 
