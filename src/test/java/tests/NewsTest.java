@@ -35,7 +35,7 @@ public class NewsTest extends SuperTest {
     public NewsTest(Rols role, String phoneNumber) {
         this.role = role;
         this.phoneNumber = phoneNumber;
-        swipedeclarationsDown = new Swipe(web_a, 50, 73, 50, 45, 1000);
+        swipedeclarationsDown = new Swipe(web_a, 50, 73, 50, 45, 300);
 
     }
 
@@ -58,11 +58,11 @@ public class NewsTest extends SuperTest {
 
         web_a.swipeAction(swipedeclarationsDown);
 
-        NewsCard newsCard1 = newsPage.chouseNews(1);
+        NewsCard newsCard1 = newsPage.chouseNews(0);
         newsPage.clickOnBackButton();
 
         web_a.swipeAction(swipedeclarationsDown);
-        NewsCard newsCard2 = newsPage.chouseNews(2);
+        NewsCard newsCard2 = newsPage.chouseNews(0);
 
         newsPage.clickOnBackButton();
         newsPage.clickOnBackButton();
