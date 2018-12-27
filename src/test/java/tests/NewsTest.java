@@ -58,11 +58,11 @@ public class NewsTest extends SuperTest {
 
         web_a.swipeAction(swipedeclarationsDown);
 
-        NewsCard newsCard1 = newsPage.chouseNews(0);
+        NewsCard newsCard1 = newsPage.chouseNews(1);
         newsPage.clickOnBackButton();
 
         web_a.swipeAction(swipedeclarationsDown);
-        NewsCard newsCard2 = newsPage.chouseNews(0);
+        NewsCard newsCard2 = newsPage.chouseNews(1);
 
         newsPage.clickOnBackButton();
         newsPage.clickOnBackButton();
