@@ -132,8 +132,9 @@ public class WebActions {
         capabilities.setCapability("platformVersion", "8.0.0");
         capabilities.setCapability("deviceName", "CQ3000HB6L");
 
-        String appVersion = "1" + "53";
-        capabilities.setCapability("app", "/Users/mcs/Downloads/agroclub-" +"2.0.2"+"(" + appVersion +")-api(v1.0.6)-debug.apk");
+        String appVersion = "1" + "62";
+        capabilities.setCapability("app", "/Users/mcs/Downloads/agroclub-" +"2.0.2"+"(" + appVersion +")-api_communication(v1.0.0)-debug.apk");
+
         //capabilities.setCapability("app", "/home/k.malev/Загрузки/agroclub-2.0.1(111)-api(v1.0.5)-debug.apk");
 
         capabilities.setCapability("appPackage", "ru.agroclub");
