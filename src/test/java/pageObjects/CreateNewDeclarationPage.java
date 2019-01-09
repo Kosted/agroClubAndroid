@@ -103,7 +103,8 @@ public class CreateNewDeclarationPage extends MainAgroPage {
             for (WebElement webElement : fieldsList) {
                 if (web_a.isPresent(webElement, By.className("android.widget.EditText"), 1) != null)
                     currentFieldsName = web_a.isPresent(webElement, By.className("android.widget.EditText"), 1).getText();
-                else
+
+                else if (web_a.isPresent(webElement, By.className("android.widget.TextView"), 2) != null)
                     currentFieldsName = webElement.findElement(By.className("android.widget.TextView")).getText();
 
                 if (currentFieldsName.contains(fieldName)) {

@@ -51,6 +51,7 @@ public class ChousListPage extends SuperPage {
 
                 if (currentFieldsName.contains(fieldName)) {
                     webElement.click();
+                    return;
 
                 }
             }
