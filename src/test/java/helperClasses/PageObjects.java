@@ -29,6 +29,10 @@ public class PageObjects {
     protected static MarketChousFilterPage marketChousFilterPage;
     protected static NewsPage newsPage;
     protected static OrganizationPage organizationPage;
+    protected static HarvestBuyConditionPage harvestBuyConditionPage;
+    protected static ChousListPage chousListPage;
+    protected static CreateNewDeclarationPage createNewDeclarationPage;
+    protected static CreateDeclarationPropertyPage createDeclarationPropertyPage;
 
 
     private WebActions web_a;
@@ -53,6 +57,10 @@ public class PageObjects {
         marketChousFilterPage = new MarketChousFilterPage(web_a);
         newsPage = new NewsPage(web_a);
         organizationPage = new OrganizationPage(web_a);
+        harvestBuyConditionPage = new HarvestBuyConditionPage(web_a);
+        chousListPage = new ChousListPage(web_a);
+        createNewDeclarationPage = new CreateNewDeclarationPage(web_a);
+        createDeclarationPropertyPage = new CreateDeclarationPropertyPage(web_a);
 
     }
 

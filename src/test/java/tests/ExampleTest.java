@@ -1,64 +1,85 @@
 package tests;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import pageObjects.CreateDeclarationPropertyPage;
+import pageObjects.HarvestBuyConditionPage;
+import pageObjects.MarcetplacePage;
 import pageObjects.MarketChousFilterPage;
 import subPageObj.CultureLib;
 import subPageObj.FullMarcetPlaseDeclaration;
 import subPageObj.ShortMarcetPlaseDeclaration;
 import superClasses.SuperTest;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
+import static superClasses.SuperTest.Rols.FARMER;
+import static superClasses.SuperTest.Rols.PURCHASER;
 
+@RunWith(value = Parameterized.class)
 public class ExampleTest extends SuperTest {
 
+    @Parameterized.Parameters
+    public static Collection<Object[]> data() {
+        return Arrays.asList(new Object[][]{
 
-    public ExampleTest() {
-       // super(web_a);
+                {FARMER},
+                {PURCHASER}
+        });
+    }
+    private Rols role;
+
+    public ExampleTest(Rols role) {
+        this.role = role;
     }
 
     @Test
     public void exampleTest() {
-        welcomePage.skipWelcomeTour();
-        autorization("9054733762", Rols.PURCHASER);
-        priceUpdatePage.clickOnConfirmButton();
+        registration(null, null, null, role);
+        //priceUpdatePage.clickOnConfirmButton();
 
-       // loginPage.assertion();
+       marcetplacePage.clickOnCreateButton();
 
-        //loginPage.chousePurchaser();
+       createNewDeclarationPage.farmerChousDeclarationType(MarcetplacePage.MarketSections.HARVEST);
 
-       // loginPage.insertPhoneNumber("9054733762");
-
-//        loginPage.clickOnLoginButton();
-//
-//        smsCodeAcceptPage.assertion();
-//        smsCodeAcceptPage.insertCorrectSmsCode();
-
-//        priceUpdatePage.assertion();
-//        priceUpdatePage.clickOnConfirmButton();
+       createNewDeclarationPage.setField("Выберите культуру",null);
 
 
-        marcetplacePage.chouseCulturefilter("Пшеница 5 класс");
+        chousListPage.clickOnPropertyField("4 класс");
 
-        marketFilterPage.clickOnFilterButton();
+        createNewDeclarationPage.setField("Цена","15");
+        createNewDeclarationPage.setField("Объем","16");
 
-        marketChousFilterPage.setFilter("Протеин(белок), %","11" , MarketChousFilterPage.Sign.LESS);
-        marketChousFilterPage.clickOnConfirmButton();
+        createNewDeclarationPage.setField("показатели",null);
 
- marketFilterPage.clickOnFilterButton();
+        createDeclarationPropertyPage.setProperty("Протеин", "11", CreateDeclarationPropertyPage.Sign.MORE);
 
-        marketChousFilterPage.setFilter("Число падения, с","12" , MarketChousFilterPage.Sign.MORE);
-        marketChousFilterPage.clickOnConfirmButton();
+        createDeclarationPropertyPage.setProperty("Сорт", "Твердая", null);
 
-    //    ShortMarcetPlaseDeclaration shortMarcetPlaseDeclaration = marcetplacePage.getShortMarcetPlaseDeclaration(0);
+        createDeclarationPropertyPage.clickOnConfirmButton();
 
-//        FullMarcetPlaseDeclaration fullMarcetPlaseDeclaration = marcetplacePage.chouseDeclaration(0, false);
-//        marcetplacePage.clickOnBackButton();
-//        ShortMarcetPlaseDeclaration shortMarcetPlaseDeclaration = marcetplacePage.getShortMarcetPlaseDeclaration(0);
+        createNewDeclarationPage.switchLogistic(true);
+        createNewDeclarationPage.switchLogistic(false);
+        createNewDeclarationPage.switchLogistic(true);
+        createNewDeclarationPage.switchLogistic(false);
 
+        createNewDeclarationPage.setField("Условия оплаты", null);
 
+        harvestBuyConditionPage.switchPrepayment(false);
+        harvestBuyConditionPage.switchPrepayment(true);
+        harvestBuyConditionPage.switchPrepayment(false);
+        harvestBuyConditionPage.switchPrepayment(true);
+
+        harvestBuyConditionPage.chousePaymentDelay(HarvestBuyConditionPage.PaymentDelay.WITOUTDELAY);
+        harvestBuyConditionPage.chousePaymentDelay(HarvestBuyConditionPage.PaymentDelay.FIVEDAYS);
+        harvestBuyConditionPage.chousePaymentDelay(HarvestBuyConditionPage.PaymentDelay.THIRTYDAYS);
+
+        harvestBuyConditionPage.clickOnConfirmButton();
 
 
         System.out.println("уря");

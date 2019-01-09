@@ -13,7 +13,7 @@ public class CreateNewDeclarationPage extends MainAgroPage {
     @FindBy(id = "ru.agroclub:id/toolbarTitle")
     private WebElement titleLabel;
 
-    @FindBy(id = "ru.agroclub:id/btnBottom")
+    @FindBy(id = "ru.agroclub:id/btn")
     private WebElement confirmButton;
 
     private final Swipe swipedPropertisUp;
@@ -33,7 +33,7 @@ public class CreateNewDeclarationPage extends MainAgroPage {
 
     public void clickOnConfirmButton() {
         while (web_a.isPresent(confirmButton, 2) == null)
-            web_a.swipeAction(swipedPropertisDown);
+            swipePropertyDown(1);
         web_a.waitToBeClickableAndClick(confirmButton);
 
     }
