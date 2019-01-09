@@ -23,12 +23,15 @@ public class CreateDeclarationPropertyPage extends MainAgroPage {
     private WebElement confirmButton;
 
     private Swipe swipePropertesDown;
+    private final Swipe swipedPropertisUp;
+
 
     public enum Sign{MORE, LESS}
 
     public CreateDeclarationPropertyPage(WebActions webActions) {
         super(webActions);
         swipePropertesDown = new Swipe(web_a, 50, 73, 50, 45, 600);
+        swipedPropertisUp = new Swipe(web_a, 50, 45, 50, 73, 200);
     }
 
     public String getTitle() {
@@ -87,14 +90,15 @@ public class CreateDeclarationPropertyPage extends MainAgroPage {
         String currentFieldsName = "";
         int swipeCount = 5;
 
-        while (!currentFieldsName.contains(fieldName)|| swipeCount>0) {
+        while (!currentFieldsName.contains(fieldName) || swipeCount > 0) {
 
-            fieldsList = filtersWebList.findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup"));
+            fieldsList = driver.findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup"));
 
             for (WebElement webElement : fieldsList) {
                 if (web_a.isPresent(webElement, By.className("android.widget.EditText"), 1) != null)
                     currentFieldsName = web_a.isPresent(webElement, By.className("android.widget.EditText"), 1).getText();
-                else
+
+                else if (web_a.isPresent(webElement, By.className("android.widget.TextView"), 2) != null)
                     currentFieldsName = webElement.findElement(By.className("android.widget.TextView")).getText();
 
                 if (currentFieldsName.contains(fieldName)) {
@@ -103,18 +107,32 @@ public class CreateDeclarationPropertyPage extends MainAgroPage {
                 }
             }
             if (swipeCount > 0)
-                swipeProperty();
-            else return null;
+                swipePropertyDown(1);
+            else {
+                swipeCount = 6;
+                swipePropertyUp(4);
+
+            }
             swipeCount--;
         }
 
         return null;
     }
 
-    private void swipeProperty() {
-        web_a.swipeAction(swipePropertesDown);
+    private void swipePropertyDown(int times) {
+        while (times > 0) {
+            web_a.swipeAction(swipePropertesDown);
+            System.out.println("swipePropertyDown");
+            times--;
+        }
     }
-
+    private void swipePropertyUp(int times) {
+        while (times > 0) {
+            web_a.swipeAction(swipedPropertisUp);
+            System.out.println("swipePropertyUp");
+            times--;
+        }
+    }
 
 }
 
