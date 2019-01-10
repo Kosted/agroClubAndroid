@@ -16,10 +16,10 @@ public class HarvestBuyConditionPage extends MainAgroPage {
     @FindBy(id = "ru.agroclub:id/btnSave")
     private WebElement confirmButton;
 
-    @FindBy(id = "ru.agroclub:id/btnSave")
+    @FindBy(id = "ru.agroclub:id/paymentSwitch")
     private WebElement prepaymentSwitchElem;
 
-    @FindBy(id = "ru.agroclub:id/IITwo")
+    @FindBy(id = "ru.agroclub:id/llTwo")
     private WebElement paymentDelayButton;
 
     private final Swipe swipedPropertisUp;
