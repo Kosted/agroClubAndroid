@@ -51,6 +51,7 @@ public class HarvestBuyConditionPage extends MainAgroPage {
     }
 
     public void chousePaymentDelay(PaymentDelay paymentDelay) {
+        clickOnPaymentDelayButton();
         List<WebElement> options = driver.findElements(By.id("android:id/text1"));
         switch (paymentDelay) {
             case WITOUTDELAY:

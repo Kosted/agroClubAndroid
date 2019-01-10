@@ -33,6 +33,7 @@ public class PageObjects {
     protected static ChousListPage chousListPage;
     protected static CreateNewDeclarationPage createNewDeclarationPage;
     protected static CreateDeclarationPropertyPage createDeclarationPropertyPage;
+    protected static MyDeclarationPage myDeclarationPage;
 
 
     private WebActions web_a;
@@ -61,6 +62,7 @@ public class PageObjects {
         chousListPage = new ChousListPage(web_a);
         createNewDeclarationPage = new CreateNewDeclarationPage(web_a);
         createDeclarationPropertyPage = new CreateDeclarationPropertyPage(web_a);
+        myDeclarationPage = new MyDeclarationPage(web_a);
 
     }
 
