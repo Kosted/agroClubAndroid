@@ -89,6 +89,10 @@ public class CreateHarvestDeclarationTest extends SuperTest {
 
         createNewDeclarationPage.clickOnConfirmButton();
 
+        marcetplacePage.clickOnBackButton();
+
+        marcetplacePage.clickOnMyRequestButton();
+
 //////////////
 
         assertMCS.equalsTrue(myDeclarationPage.currentPage(), "не был осуществелн переход на страницу с моими заявками");
