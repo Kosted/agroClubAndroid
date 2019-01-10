@@ -75,8 +75,12 @@ public class ExampleTest extends SuperTest {
         harvestBuyConditionPage.switchPrepayment(false);
         harvestBuyConditionPage.switchPrepayment(true);
 
+
+        harvestBuyConditionPage.clickOnPaymentDelayButton();
         harvestBuyConditionPage.chousePaymentDelay(HarvestBuyConditionPage.PaymentDelay.WITOUTDELAY);
+        harvestBuyConditionPage.clickOnPaymentDelayButton();
         harvestBuyConditionPage.chousePaymentDelay(HarvestBuyConditionPage.PaymentDelay.FIVEDAYS);
+        harvestBuyConditionPage.clickOnPaymentDelayButton();
         harvestBuyConditionPage.chousePaymentDelay(HarvestBuyConditionPage.PaymentDelay.THIRTYDAYS);
 
         harvestBuyConditionPage.clickOnConfirmButton();
