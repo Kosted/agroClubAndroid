@@ -36,7 +36,7 @@ public class MyDeclarationPage extends MainAgroPage {
 
     public FullMyDeclaration chouseDeclaration(int position) {
 
-        List<WebElement> elements = driver.findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup"));
+        List<WebElement> elements = driver.findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.widget.FrameLayout"));
         if (elements.size() > position) {
 
             elements.get(position).click();
