@@ -8,6 +8,7 @@ import pageObjects.HarvestBuyConditionPage;
 import pageObjects.MarcetplacePage;
 import pageObjects.MyDeclarationPage;
 import subPageObj.FullMarcetPlaseDeclaration;
+import subPageObj.FullMyDeclaration;
 import superClasses.SuperTest;
 
 import java.util.Arrays;
@@ -100,29 +101,25 @@ public class CreateHarvestDeclarationTest extends SuperTest {
 
         myDeclarationPage.chousFarmerMarketplase(MyDeclarationPage.MarketSections.HARVEST);
 
-        FullMarcetPlaseDeclaration fullMarcetPlaseDeclaration = myDeclarationPage.chouseDeclaration(0);
+        FullMyDeclaration fullMyDeclaration = myDeclarationPage.chouseDeclaration(0);
 
 
         assertMCS.setStandartErrorMessege("в созданной заявке ");
 
-        assertMCS.equalsTrue(fullMarcetPlaseDeclaration.getCultureName().contains(culture), "культура создалась не правильно");
+        assertMCS.equalsTrue(fullMyDeclaration.getCultureName().contains(culture), "культура создалась не правильно");
 
-        assertMCS.equalsTrue(fullMarcetPlaseDeclaration.getMyPriceWithoutLogistic().contains(price), "цена создалась не правильно");
+        assertMCS.equalsTrue(fullMyDeclaration.getPriceWithoutNds().contains(price), "цена создалась не правильно");
 
-        assertMCS.equalsTrue(fullMarcetPlaseDeclaration.getVolume().contains(volume), "объем создался не правильно");
-
-        //assertMCS.equalsTrue(fullMarcetPlaseDeclaration.getVolume().contains(volume), "объем создался не правильно");
+        assertMCS.equalsTrue(fullMyDeclaration.getVolume().contains(volume), "объем создался не правильно");
 
         // не проверяю корректность создания свойств, ну очень геморойно \\ хотя сейчас нашел у себя функцию для этого, может потом
 
-        assertMCS.equalsTrue((!fullMarcetPlaseDeclaration.getMyPriceWithLogistic().equals("-") && logistic== true) ||
-                        (fullMarcetPlaseDeclaration.getMyPriceWithLogistic().equals("-") && logistic== false),
+        assertMCS.equalsTrue(fullMyDeclaration.getLogistic().equals(logistic),
                 "логистика создалась не правильно");
 
-        assertMCS.equalsTrue((!fullMarcetPlaseDeclaration.getFirstTermsOfPayment().equals("-") && prepayment== true) ||
-                (fullMarcetPlaseDeclaration.getFirstTermsOfPayment().equals("-") && prepayment== false), "предоплата создалась не правильно");
+        assertMCS.equalsTrue(fullMyDeclaration.getPrepayment().equals(prepayment), "предоплата создалась не правильно");
 
-        String prepaymentDayDelay = fullMarcetPlaseDeclaration.getSecondTermsOfPayment().replaceAll("[^0-9]+", "");
+        String prepaymentDayDelay = fullMyDeclaration.getPaymentDelay().replaceAll("[^0-9]+", "");
         switch (paymentDelay){
             case WITOUTDELAY:
                 assertMCS.equalsTrue(prepaymentDayDelay.equals(""), "отсрочка 0 создалась не правильно");

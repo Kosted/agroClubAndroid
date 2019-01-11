@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import subPageObj.FullMarcetPlaseDeclaration;
+import subPageObj.FullMyDeclaration;
 import subPageObj.ShortMarcetPlaseDeclaration;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class MyDeclarationPage extends MainAgroPage {
     @FindBy(id = "ru.agroclub:id/toolbarTitle")
     private WebElement titleLabel;
 
-    @FindBy(id = "ru.agroclub:id/rvDeclarations")
+    @FindBy(id = "ru.agroclub:id/recycler")
     private WebElement declarationWebList;
 
     @FindBy(id = "ru.agroclub:id/toolbarBackBtn")
@@ -33,31 +34,31 @@ public class MyDeclarationPage extends MainAgroPage {
         return web_a.isPresent(titleLabel).getText().contains("Мои заявки");
     }
 
-    public FullMarcetPlaseDeclaration chouseDeclaration(int position) {
+    public FullMyDeclaration chouseDeclaration(int position) {
 
-        List<WebElement> elements = declarationWebList.findElements(By.className("android.view.ViewGroup"));
+        List<WebElement> elements = driver.findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup"));
         if (elements.size() > position) {
 
             elements.get(position).click();
-            FullMarcetPlaseDeclaration fullMarcetPlaseDeclaration = new FullMarcetPlaseDeclaration(web_a);
+            FullMyDeclaration fullMyDeclaration = new FullMyDeclaration(web_a);
 
 
             // clickOnBackButton();
 
-            return fullMarcetPlaseDeclaration;
+            return fullMyDeclaration;
         }
         return null;
     }
 
-    public ShortMarcetPlaseDeclaration getShortMarcetPlaseDeclaration(int position) {
-        List<WebElement> elements = declarationWebList.findElements(By.className("android.view.ViewGroup"));
-        if (elements.size() > position)
-            return new ShortMarcetPlaseDeclaration(web_a, elements.get(position));
-        else {
-            System.out.println("в списке нет предложения с позицией " + position);
-            return null;
-        }
-    }
+//    public ShortMarcetPlaseDeclaration getShortMarcetPlaseDeclaration(int position) {
+//        List<WebElement> elements = declarationWebList.findElements(By.className("android.view.ViewGroup"));
+//        if (elements.size() > position)
+//            return new ShortMarcetPlaseDeclaration(web_a, elements.get(position));
+//        else {
+//            System.out.println("в списке нет предложения с позицией " + position);
+//            return null;
+//        }
+//    }
 
     public void clickOnBackButton() {
         web_a.waitToBeClickableAndClick(backButton);
