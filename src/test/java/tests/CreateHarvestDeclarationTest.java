@@ -6,6 +6,7 @@ import org.junit.runners.Parameterized;
 import pageObjects.CreateDeclarationPropertyPage;
 import pageObjects.HarvestBuyConditionPage;
 import pageObjects.MarcetplacePage;
+import pageObjects.MyDeclarationPage;
 import subPageObj.FullMarcetPlaseDeclaration;
 import superClasses.SuperTest;
 
@@ -96,6 +97,8 @@ public class CreateHarvestDeclarationTest extends SuperTest {
 //////////////
 
         assertMCS.equalsTrue(myDeclarationPage.currentPage(), "не был осуществелн переход на страницу с моими заявками");
+
+        myDeclarationPage.chousFarmerMarketplase(MyDeclarationPage.MarketSections.HARVEST);
 
         FullMarcetPlaseDeclaration fullMarcetPlaseDeclaration = myDeclarationPage.chouseDeclaration(0);
 
