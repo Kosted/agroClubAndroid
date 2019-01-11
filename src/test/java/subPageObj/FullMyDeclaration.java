@@ -18,7 +18,6 @@ public class FullMyDeclaration {
     private String volume;
     private String[] attributes;
     private String cultureName;
-    private String distance;
     //private String nds;
 
     //private String myPriceWithoutLogistic;
@@ -27,7 +26,7 @@ public class FullMyDeclaration {
     //private String myPriceWithLogistic;
     //private String priceWithDeliverySeller;
 
-    private String prepayment;
+    private Boolean prepayment;
     private String paymentDelay;
     private String addres;
 
@@ -71,12 +70,8 @@ public class FullMyDeclaration {
                     this.cultureName = textViewElements.get(1).getText();
                     break;
                 }
-                case "Объем,т": {
+                case "Объем, т": {
                     this.volume = textViewElements.get(1).getText();
-                    break;
-                }
-                case "Удаленность, км": {
-                    this.distance = textViewElements.get(1).getText();
                     break;
                 }
                 case "Цена, \u20BD/кг без НДС": {
@@ -113,7 +108,11 @@ public class FullMyDeclaration {
                 }
                 case "Условия оплаты": {
 
-                    this.prepayment = textViewElements.get(1).getText().split(",")[0];
+                    if (textViewElements.get(1).getText().split(",")[0].equals("Предоплата"))
+                        this.prepayment = true;
+                    else
+                        this.prepayment = false;
+
                     this.paymentDelay = textViewElements.get(1).getText().split(",")[1];
                     break;
                 }
@@ -148,15 +147,11 @@ public class FullMyDeclaration {
         return cultureName;
     }
 
-    public String getDistance() {
-        return distance;
-    }
-
     public String getPriceWithoutNds() {
         return priceWithoutNds;
     }
 
-    public String getPrepayment() {
+    public Boolean getPrepayment() {
         return prepayment;
     }
 

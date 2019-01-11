@@ -28,8 +28,8 @@ public class CreateHarvestDeclarationTest extends SuperTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
 
-                {FARMER, "Пшеница 3 класс", "15", "11", "Протеин", "10", LESS, false, true, WITOUTDELAY}/*,
-                {FARMER, "Рожь", "9", "8", "Влажность", "4", MORE, true, false, FIVEDAYS}*/
+                {FARMER, "Пшеница 3 класс", "15", "11", "Протеин", "10", LESS, false, true, WITOUTDELAY},
+                {FARMER, "Рожь", "9", "8", "Влажность", "4", MORE, true, false, FIVEDAYS}
         });
     }
     private Rols role;
