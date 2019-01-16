@@ -1,4 +1,4 @@
-package pageObjects;
+package superClasses;
 
 import helperClasses.WebActions;
 import org.openqa.selenium.WebElement;

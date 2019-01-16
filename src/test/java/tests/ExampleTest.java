@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import pageObjects.CreateDeclarationPropertyPage;
-import pageObjects.HarvestBuyConditionPage;
+import pageObjects.harvest.HarvestBuyConditionPage;
 import pageObjects.MarcetplacePage;
 import superClasses.SuperTest;
 
@@ -13,7 +13,7 @@ import java.util.Collection;
 
 
 import static pageObjects.CreateDeclarationPropertyPage.Sign.MORE;
-import static pageObjects.HarvestBuyConditionPage.PaymentDelay.WITOUTDELAY;
+import static pageObjects.harvest.HarvestBuyConditionPage.PaymentDelay.WITOUTDELAY;
 import static superClasses.SuperTest.Rols.FARMER;
 import static superClasses.SuperTest.Rols.PURCHASER;
 
@@ -24,7 +24,7 @@ public class ExampleTest extends SuperTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
 
-                {FARMER, "Пшеница 3 класс", "15", "11", "Протеин", "10", MORE, true, true, WITOUTDELAY},
+                {FARMER, "Лен", "10", "10", "Масленистость", "10", MORE, true, true, WITOUTDELAY},
                 {PURCHASER}
         });
     }
@@ -54,52 +54,84 @@ public class ExampleTest extends SuperTest {
 
     @Test
     public void exampleTest() {
-        registration(null, null, null, role);
+
+        // создание заявки на продажу фермера
+        autorization("9050000001",  role);
         //priceUpdatePage.clickOnConfirmButton();
 
-       marcetplacePage.clickOnCreateButton();
+        marcetplacePage.clickOnCreateButton();
 
-       createNewDeclarationPage.farmerChousDeclarationType(MarcetplacePage.MarketSections.HARVEST);
+        if (role.equals(FARMER))
+            createNewDeclarationPage.farmerChousDeclarationType(MarcetplacePage.MarketSections.HARVEST);
 
-       createNewDeclarationPage.setField("Выберите культуру",null);
+        createNewDeclarationPage.setField("Выберите культуру",null);
 
+        chousListPage.clickOnPropertyField(culture);
 
-        chousListPage.clickOnPropertyField("4 класс");
-
-        createNewDeclarationPage.setField("Цена","15");
-        createNewDeclarationPage.setField("Объем","16");
+        createNewDeclarationPage.setField("Цена",price);
+        createNewDeclarationPage.setField("Объем",volume);
 
         createNewDeclarationPage.setField("показатели",null);
 
-        createDeclarationPropertyPage.setProperty("Протеин", "11", MORE);
+        createDeclarationPropertyPage.setProperty(property, propertyValue, propertySign);
 
         createDeclarationPropertyPage.clickOnConfirmButton();
 
-        createNewDeclarationPage.switchLogistic(true);
-        createNewDeclarationPage.switchLogistic(false);
-
-
         createNewDeclarationPage.setField("Условия оплаты", null);
-
-        harvestBuyConditionPage.switchPrepayment(false);
-        harvestBuyConditionPage.switchPrepayment(true);
-        harvestBuyConditionPage.switchPrepayment(false);
-        harvestBuyConditionPage.switchPrepayment(true);
-
-
-        harvestBuyConditionPage.chousePaymentDelay(WITOUTDELAY);
-
 
         harvestBuyConditionPage.clickOnConfirmButton();
 
         createNewDeclarationPage.clickOnConfirmButton();
 
-        System.out.println("уря");
+        marcetplacePage.clickOnBackButton();
+
+        marcetplacePage.clickOnMenuButton();
+
+        menuPage.clickOnLogautButton();
+
+// создание заявки закупщика и создание отклика на заявку фермера
 
 
+        // создание заявки
+        role = PURCHASER;
 
+        autorization("9050000002",  role);
 
+        marcetplacePage.clickOnCreateButton();
 
+        if (role.equals(FARMER))
+            createNewDeclarationPage.farmerChousDeclarationType(MarcetplacePage.MarketSections.HARVEST);
+
+        createNewDeclarationPage.setField("Выберите культуру",null);
+
+        chousListPage.clickOnPropertyField(culture);
+
+        createNewDeclarationPage.setField("Цена",price+0);
+        createNewDeclarationPage.setField("Объем",volume+0);
+
+        createNewDeclarationPage.setField("показатели",null);
+
+        createDeclarationPropertyPage.setProperty(property, propertyValue, propertySign);
+
+        createDeclarationPropertyPage.clickOnConfirmButton();
+
+        createNewDeclarationPage.setField("Условия оплаты", null);
+
+        harvestBuyConditionPage.clickOnConfirmButton();
+
+        createNewDeclarationPage.clickOnConfirmButton();
+
+        marcetplacePage.clickOnBackButton();
+
+        // отклик
+
+        marcetplacePage.clickOnMarketButton();
+
+        marcetplacePage.chouseCulturefilter("Лен");
+
+        marketFilterPage.chouseDeclaration(0, true);
+
+        marcetplacePage.
     }
 }
 

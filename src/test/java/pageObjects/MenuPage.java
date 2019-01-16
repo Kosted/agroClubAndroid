@@ -4,6 +4,7 @@ import helperClasses.Swipe;
 import helperClasses.WebActions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import superClasses.MainAgroPage;
 
 public class MenuPage extends MainAgroPage {
 

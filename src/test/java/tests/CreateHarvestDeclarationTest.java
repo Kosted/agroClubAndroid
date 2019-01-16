@@ -4,10 +4,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import pageObjects.CreateDeclarationPropertyPage;
-import pageObjects.HarvestBuyConditionPage;
+import pageObjects.harvest.HarvestBuyConditionPage;
 import pageObjects.MarcetplacePage;
 import pageObjects.MyDeclarationPage;
-import subPageObj.FullMarcetPlaseDeclaration;
 import subPageObj.FullMyDeclaration;
 import superClasses.SuperTest;
 
@@ -16,8 +15,8 @@ import java.util.Collection;
 
 import static pageObjects.CreateDeclarationPropertyPage.Sign.LESS;
 import static pageObjects.CreateDeclarationPropertyPage.Sign.MORE;
-import static pageObjects.HarvestBuyConditionPage.PaymentDelay.FIVEDAYS;
-import static pageObjects.HarvestBuyConditionPage.PaymentDelay.WITOUTDELAY;
+import static pageObjects.harvest.HarvestBuyConditionPage.PaymentDelay.FIVEDAYS;
+import static pageObjects.harvest.HarvestBuyConditionPage.PaymentDelay.WITOUTDELAY;
 import static superClasses.SuperTest.Rols.FARMER;
 import static superClasses.SuperTest.Rols.PURCHASER;
 
@@ -29,7 +28,9 @@ public class CreateHarvestDeclarationTest extends SuperTest {
         return Arrays.asList(new Object[][]{
 
                 {FARMER, "Пшеница 3 класс", "15", "11", "Протеин", "10", LESS, false, true, WITOUTDELAY},
-                {FARMER, "Рожь", "9", "8", "Влажность", "4", MORE, true, false, FIVEDAYS}
+                {FARMER, "Рожь", "9", "8", "Влажность", "4", MORE, true, false, FIVEDAYS},
+                {PURCHASER, "Пшеница 3 класс", "15", "11", "Протеин", "10", LESS, false, true, WITOUTDELAY},
+                {PURCHASER, "Рожь", "9", "8", "Влажность", "4", MORE, true, false, FIVEDAYS}
         });
     }
     private Rols role;
@@ -62,6 +63,7 @@ public class CreateHarvestDeclarationTest extends SuperTest {
 
        marcetplacePage.clickOnCreateButton();
 
+       if (role.equals(FARMER))
        createNewDeclarationPage.farmerChousDeclarationType(MarcetplacePage.MarketSections.HARVEST);
 
        createNewDeclarationPage.setField("Выберите культуру",null);
@@ -99,7 +101,8 @@ public class CreateHarvestDeclarationTest extends SuperTest {
 
         assertMCS.equalsTrue(myDeclarationPage.currentPage(), "не был осуществелн переход на страницу с моими заявками");
 
-        myDeclarationPage.chousFarmerMarketplase(MyDeclarationPage.MarketSections.HARVEST);
+        if (role.equals(FARMER))
+            myDeclarationPage.chousFarmerMarketplase(MyDeclarationPage.MarketSections.HARVEST);
 
         FullMyDeclaration fullMyDeclaration = myDeclarationPage.chouseDeclaration(0);
 

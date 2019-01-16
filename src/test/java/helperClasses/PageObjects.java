@@ -1,9 +1,13 @@
 package helperClasses;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pageObjects.*;
+import pageObjects.harvest.*;
 import subPageObj.CultureLib;
 import superClasses.SuperTest;
 
+import java.util.List;
 import java.util.Random;
 
 
@@ -34,12 +38,19 @@ public class PageObjects {
     protected static CreateNewDeclarationPage createNewDeclarationPage;
     protected static CreateDeclarationPropertyPage createDeclarationPropertyPage;
     protected static MyDeclarationPage myDeclarationPage;
+    protected static OffersPage offersPage;
+    protected static MeetingListPage meetingListPage;
+    protected static MeetingPage meetingPage;
+    protected static MarketResponsePage marcetResponcePage;
 
 
     private WebActions web_a;
 
+
     public PageObjects(WebActions web_a) {
         this.web_a = web_a;
+
+
         loginPage = new LoginPage(web_a);
         registrationPage = new RegistrationPage(web_a);
         smsCodeAcceptPage = new SmsCodeAcceptPage(web_a);
@@ -63,6 +74,10 @@ public class PageObjects {
         createNewDeclarationPage = new CreateNewDeclarationPage(web_a);
         createDeclarationPropertyPage = new CreateDeclarationPropertyPage(web_a);
         myDeclarationPage = new MyDeclarationPage(web_a);
+        offersPage = new OffersPage(web_a);
+        meetingListPage = new MeetingListPage(web_a);
+        meetingPage = new MeetingPage(web_a);
+        marcetResponcePage = new MarketResponsePage(web_a);
 
     }
 
@@ -154,5 +169,6 @@ public class PageObjects {
 
         // priceUpdatePage.clickOnConfirmButton();
     }
+
 
 }

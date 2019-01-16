@@ -5,9 +5,8 @@ import helperClasses.WebActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import subPageObj.FullMarcetPlaseDeclaration;
 import subPageObj.FullMyDeclaration;
-import subPageObj.ShortMarcetPlaseDeclaration;
+import superClasses.MainAgroPage;
 
 import java.util.List;
 
@@ -48,6 +47,33 @@ public class MyDeclarationPage extends MainAgroPage {
             return fullMyDeclaration;
         }
         return null;
+    }
+
+    public void chouseDeclarationOffers(int position) {
+
+        List<WebElement> elements = driver.findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.widget.FrameLayout"));
+        if (elements.size() > position)
+
+            elements.get(position).findElement(By.id("ru.agroclub:id/clOffers")).click();
+
+    }
+
+    public void chouseDeclarationMeetings(int position) {
+
+        List<WebElement> elements = driver.findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.widget.FrameLayout"));
+        if (elements.size() > position)
+
+            elements.get(position).findElement(By.id("ru.agroclub:id/clMeetings")).click();
+
+    }
+
+    public void chouseDeclarationDeals(int position) {
+
+        List<WebElement> elements = driver.findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.widget.FrameLayout"));
+        if (elements.size() > position)
+
+            elements.get(position).findElement(By.id("ru.agroclub:id/clDeal")).click();
+
     }
 
 //    public ShortMarcetPlaseDeclaration getShortMarcetPlaseDeclaration(int position) {

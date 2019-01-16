@@ -5,6 +5,7 @@ import helperClasses.WebActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import superClasses.MainAgroPage;
 
 import java.util.List;
 
@@ -84,55 +85,6 @@ public class CreateDeclarationPropertyPage extends MainAgroPage {
 
     }
 
-    private WebElement getPropertyField(String fieldName) {
-
-        List<WebElement> fieldsList;
-        String currentFieldsName = "";
-        int swipeCount = 5;
-
-        while (!currentFieldsName.contains(fieldName) || swipeCount > 0) {
-
-            fieldsList = driver.findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup"));
-
-            for (WebElement webElement : fieldsList) {
-                if (web_a.isPresent(webElement, By.className("android.widget.EditText"), 1) != null)
-                    currentFieldsName = web_a.isPresent(webElement, By.className("android.widget.EditText"), 1).getText();
-
-                else if (web_a.isPresent(webElement, By.className("android.widget.TextView"), 2) != null)
-                    currentFieldsName = webElement.findElement(By.className("android.widget.TextView")).getText();
-
-                if (currentFieldsName.contains(fieldName)) {
-                    return webElement;
-
-                }
-            }
-            if (swipeCount > 0)
-                swipePropertyDown(1);
-            else {
-                swipeCount = 6;
-                swipePropertyUp(4);
-
-            }
-            swipeCount--;
-        }
-
-        return null;
-    }
-
-    private void swipePropertyDown(int times) {
-        while (times > 0) {
-            web_a.swipeAction(swipePropertesDown);
-            System.out.println("swipePropertyDown");
-            times--;
-        }
-    }
-    private void swipePropertyUp(int times) {
-        while (times > 0) {
-            web_a.swipeAction(swipedPropertisUp);
-            System.out.println("swipePropertyUp");
-            times--;
-        }
-    }
 
 }
 

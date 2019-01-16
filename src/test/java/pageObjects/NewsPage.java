@@ -5,9 +5,8 @@ import helperClasses.WebActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import subPageObj.FullMarcetPlaseDeclaration;
 import subPageObj.NewsCard;
-import subPageObj.ShortMarcetPlaseDeclaration;
+import superClasses.MainAgroPage;
 
 import java.util.List;
 
