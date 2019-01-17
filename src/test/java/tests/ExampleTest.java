@@ -6,6 +6,7 @@ import org.junit.runners.Parameterized;
 import pageObjects.CreateDeclarationPropertyPage;
 import pageObjects.harvest.HarvestBuyConditionPage;
 import pageObjects.MarcetplacePage;
+import pageObjects.harvest.MarketResponsePage;
 import superClasses.SuperTest;
 
 import java.util.Arrays;
@@ -14,6 +15,8 @@ import java.util.Collection;
 
 import static pageObjects.CreateDeclarationPropertyPage.Sign.MORE;
 import static pageObjects.harvest.HarvestBuyConditionPage.PaymentDelay.WITOUTDELAY;
+import static pageObjects.harvest.MarketResponsePage.paymentCondition.PREPAYMENT;
+import static pageObjects.harvest.MarketResponsePage.whoDelivers.I;
 import static superClasses.SuperTest.Rols.FARMER;
 import static superClasses.SuperTest.Rols.PURCHASER;
 
@@ -24,8 +27,8 @@ public class ExampleTest extends SuperTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
 
-                {FARMER, "Лен", "10", "10", "Масленистость", "10", MORE, true, true, WITOUTDELAY},
-                {PURCHASER}
+                {FARMER, "Лен", "10", "10", "Масленистость", "10", MORE, true, true, WITOUTDELAY}
+
         });
     }
     private Rols role;
@@ -131,7 +134,10 @@ public class ExampleTest extends SuperTest {
 
         marketFilterPage.chouseDeclaration(0, true);
 
-        marcetplacePage.
+        marcetResponcePage.setVolume(price+1);
+        marcetResponcePage.chouseDelivary(I);
+        marcetResponcePage.chousePaymentCondition(PREPAYMENT);
+        marcetResponcePage.clickOnDoOfferButton();
     }
 }
 
