@@ -41,13 +41,11 @@ public class ChousListPage extends SuperPage {
 
         while (!currentFieldsName.contains(fieldName) && swipeCount > 0) {
 
-            fieldsList = driver.findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup"));
+            fieldsList = driver.findElements(By.id("ru.agroclub:id/tvName"));
 
             for (WebElement webElement : fieldsList) {
-                if (web_a.isPresent(webElement, By.className("android.widget.EditText"), 1) != null)
-                    currentFieldsName = web_a.isPresent(webElement, By.className("android.widget.EditText"), 1).getText();
-                else
-                    currentFieldsName = webElement.findElement(By.className("android.widget.TextView")).getText();
+
+                    currentFieldsName = webElement.getText();
 
                 if (currentFieldsName.contains(fieldName)) {
                     webElement.click();
