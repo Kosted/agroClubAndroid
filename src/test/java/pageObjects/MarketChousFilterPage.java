@@ -89,34 +89,9 @@ public class MarketChousFilterPage extends MainAgroPage {
 
     }
 
-    private WebElement getPropertyField(String fieldName) {
+    private WebElement getField(String fieldName) {
 
-        List<WebElement> fieldsList;
-        String currentFieldsName = "";
-        int swipeCount = 5;
-
-        while (!currentFieldsName.contains(fieldName)|| swipeCount>0) {
-
-            fieldsList = filtersWebList.findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup"));
-
-            for (WebElement webElement : fieldsList) {
-                if (web_a.isPresent(webElement, By.className("android.widget.EditText"), 1) != null)
-                    currentFieldsName = web_a.isPresent(webElement, By.className("android.widget.EditText"), 1).getText();
-                else
-                    currentFieldsName = webElement.findElement(By.className("android.widget.TextView")).getText();
-
-                if (currentFieldsName.contains(fieldName)) {
-                    return webElement;
-
-                }
-            }
-            if (swipeCount > 0)
-                swipeProperty();
-            else return null;
-            swipeCount--;
-        }
-
-        return null;
+       return getPropertyField(fieldName);
     }
 
     private void swipeProperty() {

@@ -18,8 +18,6 @@ public class MeetingPage extends SuperPage {
 
     public MeetingPage(WebActions webActions) {
         super(webActions);
-        swipedPropertyDown = new Swipe(web_a, 50, 73, 50, 45, 600);
-        swipedPropertyUp = new Swipe(web_a, 50, 45, 50, 73, 200);
     }
 
 
@@ -101,25 +99,8 @@ public class MeetingPage extends SuperPage {
         web_a.waitToBeClickableAndClick(cancelButton);
     }
 
-    private void swipePropertyDown(int times) {
-        while (times > 0) {
-            web_a.swipeAction(swipedPropertyDown);
-            System.out.println("swipePropertyDown");
-            times--;
-        }
-    }
 
 
-    private final Swipe swipedPropertyUp;
-    private final Swipe swipedPropertyDown;
-
-    private void swipePropertyUp(int times) {
-        while (times > 0) {
-            web_a.swipeAction(swipedPropertyUp);
-            System.out.println("swipePropertyUp");
-            times--;
-        }
-    }
     public void doCounterOffers(String price, String volume){
 
             clickOnRejectButton();
