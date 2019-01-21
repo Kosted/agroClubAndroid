@@ -104,7 +104,7 @@ public class CreateHarvestDeclarationTest extends SuperTest {
         if (role.equals(FARMER))
             myDeclarationPage.chousFarmerMarketplase(MyDeclarationPage.MarketSections.HARVEST);
 
-        FullMyDeclaration fullMyDeclaration = myDeclarationPage.chouseDeclaration(0);
+        FullMyDeclaration fullMyDeclaration = myDeclarationPage.chouseDeclaration(0, MyDeclarationPage.Action.GETDECLARATION);
 
 
         assertMCS.setStandartErrorMessege("в созданной заявке ");

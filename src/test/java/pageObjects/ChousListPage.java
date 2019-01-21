@@ -22,7 +22,7 @@ public class ChousListPage extends SuperPage {
 
     public ChousListPage(WebActions webActions) {
         super(webActions);
-        swipedPropertisDown = new Swipe(web_a, 50, 73, 50, 45, 600);
+        swipedPropertisDown = new Swipe(web_a, 50, 80, 50, 25, 600);
     }
 
 //    public void assertion() {

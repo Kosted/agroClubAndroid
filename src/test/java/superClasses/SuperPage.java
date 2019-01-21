@@ -68,10 +68,11 @@ public abstract class SuperPage {
         while (swipeCount > min) {
 
             WebElement present = web_a.isPresent(null, By.xpath("//*[contains(@text, '" + fieldName + "')]"), 2);
-            if (present.getAttribute("className").equals("android.widget.EditText"))
-                return present;
 
             if (present !=null) {
+
+                if (present.getAttribute("className").equals("android.widget.EditText"))
+                    return present;
 
                 fieldsList = web_a.getDriver().findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup"));
 

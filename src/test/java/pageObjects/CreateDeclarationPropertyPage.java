@@ -66,7 +66,13 @@ public class CreateDeclarationPropertyPage extends MainAgroPage {
 
                 return property;
             } else {
-                web_a.insertTextOnAndroidEditTextField(parentPropertyField, value);
+                //web_a.insertTextOnAndroidEditTextField(parentPropertyField, value); //после обновления getProperty , не нужно искать textEdit для вставки в него значения
+                parentPropertyField.sendKeys(value);
+
+                parentPropertyField = parentPropertyField.findElement(By.xpath("./.."));
+                parentPropertyField = parentPropertyField.findElement(By.xpath("./.."));
+                parentPropertyField = parentPropertyField.findElement(By.xpath("./.."));
+
                 switch (sign) {
                     case LESS: {
                         web_a.waitToBeClickableAndClick(parentPropertyField.findElement(By.id("ru.agroclub:id/tvLess")));
