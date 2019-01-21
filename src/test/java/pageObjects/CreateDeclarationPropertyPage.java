@@ -55,10 +55,10 @@ public class CreateDeclarationPropertyPage extends MainAgroPage {
         if (property == null) {
             return null;
         } else {
-            WebElement childPropertyField = getPropertyField(property);
+            WebElement parentPropertyField = getPropertyElem(property);
 
-            if (web_a.isPresent(childPropertyField, By.id("ru.agroclub:id/spinner"), 1) != null) {
-                web_a.waitToBeClickableAndClick(childPropertyField);
+            if (web_a.isPresent(parentPropertyField, By.id("ru.agroclub:id/spinner"), 1) != null) {
+                web_a.waitToBeClickableAndClick(parentPropertyField);
 
                 web_a.isPresent(null, By.xpath("//*[@text='" + value + "']"), 3).click();
 
@@ -66,11 +66,7 @@ public class CreateDeclarationPropertyPage extends MainAgroPage {
 
                 return property;
             } else {
-                //web_a.insertTextOnAndroidEditTextField(parentPropertyField, value); //после обновления getProperty , не нужно искать textEdit для вставки в него значения
-
-                WebElement parentPropertyField = childPropertyField.findElement(By.xpath(".."));
-                childPropertyField.sendKeys(value);
-                parentPropertyField = parentPropertyField.findElement(By.xpath("../.."));
+                web_a.insertTextOnAndroidEditTextField(parentPropertyField, value);
 
                 switch (sign) {
                     case LESS: {
@@ -90,6 +86,43 @@ public class CreateDeclarationPropertyPage extends MainAgroPage {
 
     }
 
+    public WebElement getPropertyElem(String fieldName) {
+
+        List<WebElement> fieldsList;
+        int min = -5;
+        int swipeCount = 5;
+
+
+        while (swipeCount > min) {
+
+            WebElement present = web_a.isPresent(null, By.xpath("//*[contains(@text, '" + fieldName + "')]"), 2);
+
+            if (present !=null) {
+
+                fieldsList = web_a.getDriver().findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup"));
+
+                for (WebElement webElement : fieldsList) {
+
+                    present = web_a.isPresent(webElement, By.xpath("//*[contains(@text, '" + fieldName + "')]"), 2);
+
+                    if (present != null) {
+                        return webElement;
+                    }
+                }
+            }
+            if (swipeCount != min)
+                swipePropertyDown(1);
+            else {
+                min ++ ;
+                swipeCount = min * -1;
+                swipePropertyUp(4);
+
+            }
+            swipeCount-=2;
+        }
+
+        return null;
+    }
 
 }
 
