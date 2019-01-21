@@ -27,7 +27,7 @@ public class ExampleTest extends SuperTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
 
-                {FARMER, "Лен", "10", "10", "Масленистость", "10", MORE, true, true, WITOUTDELAY}
+                {FARMER, "Лен", "10", "10", "Масличность", "10", MORE, true, true, WITOUTDELAY}
 
         });
     }
@@ -62,6 +62,51 @@ public class ExampleTest extends SuperTest {
         autorization("9050000001",  role);
         //priceUpdatePage.clickOnConfirmButton();
 
+
+        createDeclaration();
+
+        marcetplacePage.clickOnMenuButton();
+
+        menuPage.clickOnLogautButton();
+
+// создание заявки закупщика и создание отклика на заявку фермера
+
+        // создание заявки
+        role = PURCHASER;
+        price+=0;
+        volume+=0;
+
+        autorization("9050000002",  role);
+
+       createDeclaration();
+
+        // отклик
+
+        marcetplacePage.clickOnMarketButton();
+
+        marcetplacePage.chouseCulturefilter("Лен");
+
+        marketFilterPage.chouseDeclaration(0, true);
+
+        marcetResponcePage.setVolume(price+1);
+        marcetResponcePage.chouseDelivary(I);
+        marcetResponcePage.chousePaymentCondition(PREPAYMENT);
+        marcetResponcePage.clickOnDoOfferButton();
+
+
+        //проверки создавшегося отклика
+
+        meetingPage.clickOnBackButton();
+        meetingListPage.clickOnBackButton();
+
+
+
+
+
+
+    }
+
+    private void createDeclaration(){
         marcetplacePage.clickOnCreateButton();
 
         if (role.equals(FARMER))
@@ -87,57 +132,6 @@ public class ExampleTest extends SuperTest {
         createNewDeclarationPage.clickOnConfirmButton();
 
         marcetplacePage.clickOnBackButton();
-
-        marcetplacePage.clickOnMenuButton();
-
-        menuPage.clickOnLogautButton();
-
-// создание заявки закупщика и создание отклика на заявку фермера
-
-
-        // создание заявки
-        role = PURCHASER;
-
-        autorization("9050000002",  role);
-
-        marcetplacePage.clickOnCreateButton();
-
-        if (role.equals(FARMER))
-            createNewDeclarationPage.farmerChousDeclarationType(MarcetplacePage.MarketSections.HARVEST);
-
-        createNewDeclarationPage.setField("Выберите культуру",null);
-
-        chousListPage.clickOnPropertyField(culture);
-
-        createNewDeclarationPage.setField("Цена",price+0);
-        createNewDeclarationPage.setField("Объем",volume+0);
-
-        createNewDeclarationPage.setField("показатели",null);
-
-        createDeclarationPropertyPage.setProperty(property, propertyValue, propertySign);
-
-        createDeclarationPropertyPage.clickOnConfirmButton();
-
-        createNewDeclarationPage.setField("Условия оплаты", null);
-
-        harvestBuyConditionPage.clickOnConfirmButton();
-
-        createNewDeclarationPage.clickOnConfirmButton();
-
-        marcetplacePage.clickOnBackButton();
-
-        // отклик
-
-        marcetplacePage.clickOnMarketButton();
-
-        marcetplacePage.chouseCulturefilter("Лен");
-
-        marketFilterPage.chouseDeclaration(0, true);
-
-        marcetResponcePage.setVolume(price+1);
-        marcetResponcePage.chouseDelivary(I);
-        marcetResponcePage.chousePaymentCondition(PREPAYMENT);
-        marcetResponcePage.clickOnDoOfferButton();
     }
 }
 

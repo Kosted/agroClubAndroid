@@ -291,9 +291,7 @@ public class WebActions {
             return null;
         }
         driver.manage().timeouts().implicitlyWait(defaultImlicityWait, TimeUnit.SECONDS);
-        System.out.println(new Date(
-
-        ).toString() +  " элемент найден " + webElement.getAttribute("className"));
+        System.out.println(new Date().toString() +  " элемент найден " + webElement.getAttribute("className"));
         return webElement;
     }
 
@@ -324,27 +322,21 @@ public class WebActions {
         if (searchpoint != null)
             return searchpoint.findElement(locator);
         else return driver.findElement(locator);
-
     }
 
     public WebElement isPresent(WebElement webElement) {
         try {
             wait10.until(ExpectedConditions.visibilityOf(webElement));
         } catch (Exception e) {
-            System.out.println(new Date(
-
-            ).toString() +  " элемент не найден");
+            System.out.println(new Date().toString() +  " элемент не найден");
             return null;
         }
-        System.out.println(new Date(
-
-        ).toString() + " элемент найден " + webElement.getAttribute("className"));
+        System.out.println(new Date().toString() + " элемент найден " + webElement.getAttribute("className"));
         return webElement;
     }
 
     public void insertTextOnAndroidEditTextField(WebElement field ,String text){
         isPresent(field).findElement(By.className("android.widget.EditText")).sendKeys(text);
-
     }
 
     public void swipeAction(Swipe swipe) {
@@ -355,8 +347,6 @@ public class WebActions {
                 .moveTo(swipe.end)
                 .release()
                 .perform();
-
-
     }
 
     public void skrollY(int num) {

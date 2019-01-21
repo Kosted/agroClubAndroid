@@ -37,7 +37,7 @@ public class ChousListPage extends SuperPage {
 
         List<WebElement> fieldsList;
         String currentFieldsName = "";
-        int swipeCount = 5;
+        int swipeCount = 8;
 
         while (!currentFieldsName.contains(fieldName) && swipeCount > 0) {
 

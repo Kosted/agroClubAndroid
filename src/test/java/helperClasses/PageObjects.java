@@ -150,6 +150,7 @@ public class PageObjects {
     }
 
     public void autorization(String phoneNumber, SuperTest.Rols role) {
+        welcomePage.skipWelcomeTour();
 
         loginPage.insertPhoneNumber(phoneNumber);
 

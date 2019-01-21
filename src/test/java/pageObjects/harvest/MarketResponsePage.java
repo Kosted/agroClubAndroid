@@ -39,7 +39,7 @@ public class MarketResponsePage extends MainAgroPage {
     }
 
     public void setVolume(String volume){
-        setField("Обьем", volume);
+        setField("Объем", volume);
     }
 
     public void chouseDelivary(whoDelivers value) {

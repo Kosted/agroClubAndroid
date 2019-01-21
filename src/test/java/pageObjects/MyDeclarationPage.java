@@ -21,11 +21,17 @@ public class MyDeclarationPage extends MainAgroPage {
     @FindBy(id = "ru.agroclub:id/toolbarBackBtn")
     private WebElement backButton;
 
-    private Swipe swipeDeclarationsDown;
+    @FindBy(id = "ru.agroclub:id/btnBottom")
+    private WebElement declarationActionButton;
+
+    @FindBy(id = "ru.agroclub:id/btnEdit")
+    private WebElement declarationEditButton;
+
+    @FindBy(id = "ru.agroclub:id/btnCloseRequest")
+    private WebElement declarationDeleteButton;
 
     public MyDeclarationPage(WebActions webActions) {
         super(webActions);
-        swipeDeclarationsDown = new Swipe(web_a, 50, 73, 50, 45, 1000);
     }
 
 
@@ -33,21 +39,38 @@ public class MyDeclarationPage extends MainAgroPage {
         return web_a.isPresent(titleLabel).getText().contains("Мои заявки");
     }
 
-    public FullMyDeclaration chouseDeclaration(int position) {
+    public FullMyDeclaration chouseDeclaration(int position, Action action) {
 
         List<WebElement> elements = driver.findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.widget.FrameLayout"));
         if (elements.size() > position) {
 
             elements.get(position).click();
-            FullMyDeclaration fullMyDeclaration = new FullMyDeclaration(web_a);
 
+            switch (action) {
+                case GETDECLARATION:
+                    return new FullMyDeclaration(web_a);
 
+                case EDIT:
+                    swipePropertyDown(2);
+                    web_a.waitToBeClickableAndClick(declarationActionButton);
+
+                    web_a.waitToBeClickableAndClick(declarationEditButton);
+                    return null;
+
+                case DELETE:
+                    swipePropertyDown(2);
+                    web_a.waitToBeClickableAndClick(declarationActionButton);
+
+                    web_a.waitToBeClickableAndClick(declarationDeleteButton);
+                    return null;
+            }
             // clickOnBackButton();
 
-            return fullMyDeclaration;
         }
         return null;
     }
+
+    public enum Action {GETDECLARATION, DELETE, EDIT}
 
     public void chouseDeclarationOffers(int position) {
 
@@ -110,13 +133,6 @@ public class MyDeclarationPage extends MainAgroPage {
         web_a.isPresent(null, By.id(locator), 5).click();
     }
 
-    private void swipeDeclarationsDown(int times) {
-        while (times > 0) {
-            web_a.swipeAction(swipeDeclarationsDown);
-            System.out.println("swipeDeclarationsDown");
-            times--;
-        }
-    }
 
     public enum MarketSections {HARVEST, SEEDS, SZR, FERTILIZER, COUNTERFEIT}
 

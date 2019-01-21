@@ -30,54 +30,69 @@ public abstract class SuperPage {
 
         WebElement parentPropertyField = getPropertyField(property);
 
-        if (web_a.isPresent(parentPropertyField, By.className("android.widget.EditText"), 1) != null) {
-            web_a.insertTextOnAndroidEditTextField(parentPropertyField, value);
+        if (/*parentPropertyField.getAttribute("className").equals("android.widget.EditText")*/value!=null)
+            parentPropertyField.sendKeys(value);
 
-            //web_a.isPresent(null, By.xpath("//*[@text='" + value + "']"), 3).click();
-
-            // parentPropertyField.findElement(By.xpath("//*[@text='" + value + "']")).click();
-
-            return property;
-        } else {
+        else {
             web_a.waitToBeClickableAndClick(parentPropertyField);
 
-
-            return property;
         }
+        return property;
 
 
+        //
+
+//        if (web_a.isPresent(parentPropertyField, By.className("android.widget.EditText"), 1) != null) {
+//            web_a.insertTextOnAndroidEditTextField(parentPropertyField, value);
+//
+//            //web_a.isPresent(null, By.xpath("//*[@text='" + value + "']"), 3).click();
+//
+//            // parentPropertyField.findElement(By.xpath("//*[@text='" + value + "']")).click();
+//
+//            return property;
+//        } else {
+//            web_a.waitToBeClickableAndClick(parentPropertyField);
+//
+////
+//            return property;
+//        }
     }
 
     public WebElement getPropertyField(String fieldName) {
 
         List<WebElement> fieldsList;
-        String currentFieldsName = "";
+        int min = -5;
         int swipeCount = 5;
 
-        while (!currentFieldsName.contains(fieldName) || swipeCount > 0) {
 
-            fieldsList = web_a.getDriver().findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup"));
+        while (swipeCount > min) {
 
-            for (WebElement webElement : fieldsList) {
-                if (web_a.isPresent(webElement, By.className("android.widget.EditText"), 1) != null)
-                    currentFieldsName = web_a.isPresent(webElement, By.className("android.widget.EditText"), 1).getText();
+            WebElement present = web_a.isPresent(null, By.xpath("//*[contains(@text, '" + fieldName + "')]"), 2);
+            if (present.getAttribute("className").equals("android.widget.EditText"))
+                return present;
 
-                else if (web_a.isPresent(webElement, By.className("android.widget.TextView"), 2) != null)
-                    currentFieldsName = webElement.findElement(By.className("android.widget.TextView")).getText();
+            if (present !=null) {
 
-                if (currentFieldsName.contains(fieldName)) {
-                    return webElement;
+                fieldsList = web_a.getDriver().findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup"));
 
+                for (WebElement webElement : fieldsList) {
+
+                    present = web_a.isPresent(webElement, By.xpath("//*[contains(@text, '" + fieldName + "')]"), 2);
+
+                    if (present != null) {
+                        return webElement;
+                    }
                 }
             }
-            if (swipeCount > 0)
+            if (swipeCount != min)
                 swipePropertyDown(1);
             else {
-                swipeCount = 6;
+                min ++ ;
+                swipeCount = min * -1;
                 swipePropertyUp(4);
 
             }
-            swipeCount--;
+            swipeCount-=2;
         }
 
         return null;
