@@ -55,10 +55,10 @@ public class CreateDeclarationPropertyPage extends MainAgroPage {
         if (property == null) {
             return null;
         } else {
-            WebElement parentPropertyField = getPropertyField(property);
+            WebElement childPropertyField = getPropertyField(property);
 
-            if (web_a.isPresent(parentPropertyField, By.id("ru.agroclub:id/spinner"), 1) != null) {
-                web_a.waitToBeClickableAndClick(parentPropertyField);
+            if (web_a.isPresent(childPropertyField, By.id("ru.agroclub:id/spinner"), 1) != null) {
+                web_a.waitToBeClickableAndClick(childPropertyField);
 
                 web_a.isPresent(null, By.xpath("//*[@text='" + value + "']"), 3).click();
 
@@ -67,9 +67,9 @@ public class CreateDeclarationPropertyPage extends MainAgroPage {
                 return property;
             } else {
                 //web_a.insertTextOnAndroidEditTextField(parentPropertyField, value); //после обновления getProperty , не нужно искать textEdit для вставки в него значения
-                parentPropertyField.sendKeys(value);
+                childPropertyField.sendKeys(value);
 
-                parentPropertyField = parentPropertyField.findElement(By.xpath(".."));
+                WebElement parentPropertyField = childPropertyField.findElement(By.xpath(".."));
                 parentPropertyField = parentPropertyField.findElement(By.xpath("../.."));
 
                 switch (sign) {
