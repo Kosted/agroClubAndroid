@@ -59,7 +59,7 @@ public class ExampleTest extends SuperTest {
     public void exampleTest() {
 
         // создание заявки на продажу фермера
-        autorization("9050000001",  role);
+        autorization("8000000001",  role);
         //priceUpdatePage.clickOnConfirmButton();
 
 
@@ -76,9 +76,9 @@ public class ExampleTest extends SuperTest {
         price+=0;
         volume+=0;
 
-        autorization("9050000002",  role);
+        autorization("8000000002",  role);
 
-       createDeclaration();
+        createDeclaration();
 
         // отклик
 

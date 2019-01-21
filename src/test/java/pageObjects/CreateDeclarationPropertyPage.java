@@ -67,9 +67,9 @@ public class CreateDeclarationPropertyPage extends MainAgroPage {
                 return property;
             } else {
                 //web_a.insertTextOnAndroidEditTextField(parentPropertyField, value); //после обновления getProperty , не нужно искать textEdit для вставки в него значения
-                childPropertyField.sendKeys(value);
 
                 WebElement parentPropertyField = childPropertyField.findElement(By.xpath(".."));
+                childPropertyField.sendKeys(value);
                 parentPropertyField = parentPropertyField.findElement(By.xpath("../.."));
 
                 switch (sign) {
