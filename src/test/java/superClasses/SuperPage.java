@@ -28,7 +28,7 @@ public abstract class SuperPage {
     }
     public String setField(String property, String value) {
 
-        WebElement parentPropertyField = getPropertyField(property);
+        WebElement parentPropertyField = getPropertyField(property, FindPropertySize.CURRENTFIELD);
 
         if (/*parentPropertyField.getAttribute("className").equals("android.widget.EditText")*/value!=null)
             parentPropertyField.sendKeys(value);
@@ -58,7 +58,9 @@ public abstract class SuperPage {
 //        }
     }
 
-    public WebElement getPropertyField(String fieldName) {
+    public enum FindPropertySize{ GLOBALFIELD, CURRENTFIELD}
+
+    public WebElement getPropertyField(String fieldName, FindPropertySize findPropertySize) {
 
         List<WebElement> fieldsList;
         int min = -5;
@@ -71,7 +73,7 @@ public abstract class SuperPage {
 
             if (present !=null) {
 
-                if (present.getAttribute("className").equals("android.widget.EditText"))
+                if (findPropertySize.equals(FindPropertySize.CURRENTFIELD))
                     return present;
 
                 fieldsList = web_a.getDriver().findElements(By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup"));

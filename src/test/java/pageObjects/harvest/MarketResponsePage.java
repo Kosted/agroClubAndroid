@@ -43,7 +43,7 @@ public class MarketResponsePage extends MainAgroPage {
     }
 
     public void chouseDelivary(whoDelivers value) {
-        WebElement webElement = getPropertyField("Цена, \u20BD/кг без НДС");
+        WebElement webElement = getPropertyField("Цена, \u20BD/кг без НДС",FindPropertySize.GLOBALFIELD);
         switch (value) {
             case I:
                 web_a.isPresent(webElement, By.id("ru.agroclub:id/clFirstItem"), 3).click();
@@ -55,7 +55,7 @@ public class MarketResponsePage extends MainAgroPage {
         }
     }
     public void chousePaymentCondition(paymentCondition value) {
-        WebElement webElement = getPropertyField("Условия оплаты");
+        WebElement webElement = getPropertyField("Условия оплаты",FindPropertySize.GLOBALFIELD);
         switch (value) {
             case PREPAYMENT:
                 web_a.isPresent(webElement, By.id("ru.agroclub:id/clFirstItem"), 3).click();

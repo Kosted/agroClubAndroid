@@ -59,7 +59,7 @@ public class MarketChousFilterPage extends MainAgroPage {
         if (property == null) {
             return null;
         } else {
-            WebElement parentPropertyField = getPropertyField(property);
+            WebElement parentPropertyField = getPropertyField(property, FindPropertySize.GLOBALFIELD);
 
             if (web_a.isPresent(parentPropertyField, By.id("ru.agroclub:id/spinner"), 1) != null) {
                 web_a.waitToBeClickableAndClick(parentPropertyField);
@@ -91,7 +91,7 @@ public class MarketChousFilterPage extends MainAgroPage {
 
     private WebElement getField(String fieldName) {
 
-       return getPropertyField(fieldName);
+       return getPropertyField(fieldName, FindPropertySize.GLOBALFIELD);
     }
 
     private void swipeProperty() {

@@ -62,7 +62,7 @@ public class CreateNewDeclarationPage extends MainAgroPage {
     }
 
     public void switchLogistic(boolean status) {
-        WebElement webElement = getPropertyField("Осуществляете логистику").findElement(By.id("ru.agroclub:id/scSwitch"));
+        WebElement webElement = getPropertyField("Осуществляете логистику",FindPropertySize.GLOBALFIELD).findElement(By.id("ru.agroclub:id/scSwitch"));
         if ((webElement.getText().equals("ОТКЛ.") && status == true) || (webElement.getText().equals("ВКЛ.") && status == false))
             webElement.click();
     }
@@ -74,7 +74,7 @@ public class CreateNewDeclarationPage extends MainAgroPage {
     }
 
     public WebElement getDeclarationField(String fieldName) {
-        return getPropertyField(fieldName);
+        return getPropertyField(fieldName,FindPropertySize.GLOBALFIELD);
     }
 
 
