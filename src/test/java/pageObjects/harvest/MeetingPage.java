@@ -35,10 +35,10 @@ public class MeetingPage extends SuperPage {
     }
 
     @FindBy(id = "ru.agroclub:id/btnAccept")
-    private WebElement asseptButton;
+    private WebElement acceptButton;
 
-    public void clickOnAsseptButton() {
-        web_a.waitToBeClickableAndClick(asseptButton);
+    public void clickOnAcceptButton() {
+        web_a.waitToBeClickableAndClick(acceptButton);
 
     }
 

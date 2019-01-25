@@ -42,6 +42,7 @@ public class PageObjects {
     protected static MeetingListPage meetingListPage;
     protected static MeetingPage meetingPage;
     protected static MarketResponsePage marcetResponcePage;
+    protected static DealsPage dealsPage;
 
 
     private WebActions web_a;
@@ -78,6 +79,7 @@ public class PageObjects {
         meetingListPage = new MeetingListPage(web_a);
         meetingPage = new MeetingPage(web_a);
         marcetResponcePage = new MarketResponsePage(web_a);
+        dealsPage = new DealsPage(web_a);
 
     }
 

@@ -4,9 +4,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import pageObjects.CreateDeclarationPropertyPage;
+import pageObjects.MyDeclarationPage;
+import pageObjects.harvest.DealsPage;
 import pageObjects.harvest.HarvestBuyConditionPage;
 import pageObjects.MarcetplacePage;
 import pageObjects.harvest.MarketResponsePage;
+import subPageObj.FullMeeting;
 import superClasses.SuperTest;
 
 import java.util.Arrays;
@@ -31,6 +34,7 @@ public class ExampleTest extends SuperTest {
 
         });
     }
+
     private Rols role;
     private String culture;
     private String price;
@@ -59,11 +63,13 @@ public class ExampleTest extends SuperTest {
     public void exampleTest() {
 
         // создание заявки на продажу фермера
-        autorization("8000000001",  role);
+        autorization("8000000001", role);
         //priceUpdatePage.clickOnConfirmButton();
 
 
         createDeclaration();
+
+        marcetplacePage.clickOnBackButton();
 
         marcetplacePage.clickOnMenuButton();
 
@@ -73,22 +79,29 @@ public class ExampleTest extends SuperTest {
 
         // создание заявки
         role = PURCHASER;
-        price+=0;
-        volume+=0;
+        price = "20";
+        volume = "20";
+        propertyValue = "20";
 
-        autorization("8000000002",  role);
+        autorization("8000000002", role);
 
         createDeclaration();
 
-        // отклик
+        marcetplacePage.clickOnBackButton();
+
+        // отклик закупщика на заявку фермера
+
+        price = "21";
+        volume = "21";
+        propertyValue = "21";
 
         marcetplacePage.clickOnMarketButton();
 
-        marcetplacePage.chouseCulturefilter("Лен");
+        marcetplacePage.chouseCulturefilter(culture);
 
         marketFilterPage.chouseDeclaration(0, true);
 
-        marcetResponcePage.setVolume(price+1);
+        marcetResponcePage.setVolume(price);
         marcetResponcePage.chouseDelivary(I);
         marcetResponcePage.chousePaymentCondition(PREPAYMENT);
         marcetResponcePage.clickOnDoOfferButton();
@@ -96,30 +109,126 @@ public class ExampleTest extends SuperTest {
 
         //проверки создавшегося отклика
 
+        //
+
         meetingPage.clickOnBackButton();
         meetingListPage.clickOnBackButton();
 
+        marcetplacePage.clickOnMenuButton();
+        menuPage.clickOnLogautButton();
 
+// создание отклика фермера на заявку закупщика
+        role = FARMER;
+        price = "11";
+        volume = "11";
+        propertyValue = "11";
 
+        autorization("8000000001", role);
+        //принятие переговоров
 
+        marcetplacePage.clickOnMyRequestButton();
 
+        myDeclarationPage.chousFarmerMarketplase(MyDeclarationPage.MarketSections.HARVEST);
 
+        myDeclarationPage.chouseDeclarationMeetings(0);
+
+        meetingListPage.chouseMeeting(0);
+
+        FullMeeting fullMeeting = new FullMeeting(web_a);
+
+        // проверка на правлиность составления переговоров
+        //TO DO
+
+        meetingPage.clickOnAcceptButton();
+
+        // проверка на правильность составления сделки
+        // TO DO
+        dealsPage.currentPage();
+        dealsPage.clickOnBackButton();
+
+        meetingListPage.clickOnBackButton();
+
+        myDeclarationPage.chouseDeclaration(0, MyDeclarationPage.Action.DELETE);
+
+        marcetplacePage.chousFarmerMarketplase(MarcetplacePage.MarketSections.HARVEST);
+
+        marcetplacePage.clickOnMarketButton();
+
+        marcetplacePage.chouseCulturefilter("Лен");
+
+        marketFilterPage.chouseDeclaration(1, true);
+
+        marcetResponcePage.setVolume(price);
+        marcetResponcePage.chouseDelivary(I);
+        marcetResponcePage.chousePaymentCondition(PREPAYMENT);
+        marcetResponcePage.clickOnDoOfferButton();
+
+        //проверки создавшегося отклика
+
+        //
     }
 
-    private void createDeclaration(){
+    /*залониться под фермером
+     * создание фермером заявки
+     * разлониться
+     *
+     *
+     * залогиниться под закупщиком
+     * создание закупщиком заявки
+     *
+     * формирование отклика на заявку фермера с новым объемом
+     *
+     * проверка правильности составления отклика.
+     *
+     * убедиться что по отклику была создана новая заявка у закупщика
+     *
+     * закрыть 1 свою заявку
+     *
+     * разлониться
+     *
+     *
+     * залогиниться под фермером
+     *
+     * принять переговоры
+     *
+     * проверить правильность составленной сделки
+     *
+     * создать отклик на заявку закупщика с новым объемом.
+     *
+     * проверить правильность созданного отклика
+     *
+     * убедиться что по отклику была создана новая заявка
+     *
+     * закрыть свою заявку
+     *
+     * разлогиниться
+     *
+     *
+     * залогиниться под закупщиком
+     *
+     * принять переговоры
+     *
+     * убедиться в правильности составления предыдущей сделки
+     *
+     * убедиться в правильности составления сделки принятой закупщиком
+     *
+     *
+     * */
+
+    private void createDeclaration() {
         marcetplacePage.clickOnCreateButton();
 
         if (role.equals(FARMER))
             createNewDeclarationPage.farmerChousDeclarationType(MarcetplacePage.MarketSections.HARVEST);
 
-        createNewDeclarationPage.setField("Выберите культуру",null);
+        createNewDeclarationPage.setField("Выберите культуру", null);
 
         chousListPage.clickOnPropertyField(culture);
 
-        createNewDeclarationPage.setField("Цена",price);
-        createNewDeclarationPage.setField("Объем",volume);
+        createNewDeclarationPage.setField("Цена", price);
+        createNewDeclarationPage.setField("Объем", volume);
 
-        createNewDeclarationPage.setField("показатели",null);
+        createNewDeclarationPage.setField("показатели", null);
 
         createDeclarationPropertyPage.setProperty(property, propertyValue, propertySign);
 
@@ -131,7 +240,6 @@ public class ExampleTest extends SuperTest {
 
         createNewDeclarationPage.clickOnConfirmButton();
 
-        marcetplacePage.clickOnBackButton();
     }
 }
 
